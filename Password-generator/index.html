@@ -19,30 +19,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-        rel="stylesheet" />
+        rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+            rel="stylesheet" />
+    </noscript>
 
     <!-- Tailwind & Main Styles -->
     <link href="../output.css" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        mono: ['Space Mono', 'monospace', 'ui-monospace', 'SFMono-Regular']
-                    },
-                    colors: {
-                        primary: "#10b981", // Emerald for Password Gen
-                        secondary: "#34d399",
-                        surface: "#0f172a",
-                    }
-                },
-            },
-        }
-    </script>
 </head>
 
 <body class="min-h-screen flex flex-col relative text-gray-100 selection:bg-emerald-500/30 font-sans">
