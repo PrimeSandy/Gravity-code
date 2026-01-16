@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+
 <head>
     <!-- ================= BASIC SEO ================= -->
     <title>E-TRAX | Smart Expense Tracker for Daily Budget Management</title>
@@ -7,43 +8,107 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="E-TRAX is a smart expense tracker to manage daily income and expenses with analytics, Firebase login, secure cloud storage, and budget tracking." />
-    <meta name="keywords" content="expense tracker, expense tracker app, expense tracker web app, daily expense tracker, budget tracker, budget management app, money manager, personal finance tracker, finance management app, income and expense tracker, expense tracker for students, expense tracker for professionals, smart expense tracker, E-TRAX expense tracker, AlphaPrime expense tracker, alphaprime.co.in">
+    <meta name="description"
+        content="E-TRAX is a smart expense tracker to manage daily income and expenses with analytics, Firebase login, secure cloud storage, and budget tracking." />
+    <meta name="keywords"
+        content="expense tracker, expense tracker app, expense tracker web app, daily expense tracker, budget tracker, budget management app, money manager, personal finance tracker, finance management app, income and expense tracker, expense tracker for students, expense tracker for professionals, smart expense tracker, E-TRAX expense tracker, AlphaPrime expense tracker, alphaprime.co.in">
 
     <meta name="author" content="AlphaPrime" />
     <meta name="robots" content="index, follow" />
 
     <!-- ================= CANONICAL ================= -->
-    <link rel="canonical" href="https://www.alphaprime.co.in/" />
+    <link rel="canonical" href="https://www.alphaprime.co.in/E-trax-files/index.html" />
 
     <!-- ================= OPEN GRAPH ================= -->
     <meta property="og:title" content="E-TRAX | Smart Expense Tracker" />
-    <meta property="og:description" content="Track your daily expenses, set budgets, and analyze spending with E-TRAX – a secure smart expense tracker." />
-    <meta property="og:url" content="https://www.alphaprime.co.in/" />
+    <meta property="og:description"
+        content="Track your daily expenses, set budgets, and analyze spending with E-TRAX – a secure smart expense tracker." />
+    <meta property="og:url" content="https://www.alphaprime.co.in/E-trax-files/" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://www.alphaprime.co.in/e.png" />
-
-    <!-- ================= TWITTER CARD ================= -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="E-TRAX | Smart Expense Tracker" />
-    <meta name="twitter:description" content="Manage daily expenses and budgets easily with E-TRAX." />
-    <meta name="twitter:image" content="https://www.alphaprime.co.in/e.png" />
+    <meta property="og:image" content="../e.png" />
 
     <!-- ================= FAVICONS ================= -->
     <link rel="icon" href="EtraxPub.jpg" type="image/png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
     <!-- ================= PWA ================= -->
     <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#00bcd4" />
+    <meta name="theme-color" content="#0f172a" />
 
     <!-- ================= FONTS & CSS ================= -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- ================= CUSTOM CSS ================= -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+                            500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+                        },
+                        secondary: {
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa',
+                            500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6', 900: '#4c1d95',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'enter': 'enter 0.5s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .glass-contrast {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .scroll-hidden::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-hidden {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Lottie positioning */
+        lottie-player {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+    </style>
 
     <!-- ================= JS LIBS ================= -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -55,261 +120,363 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
+        "@type": "SoftwareApplication",
         "name": "E-TRAX",
-        "url": "https://www.alphaprime.co.in/",
-        "logo": "https://www.alphaprime.co.in/logo.png"
+        "applicationCategory": "FinanceApplication",
+        "url": "https://www.alphaprime.co.in/E-trax-files/",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
     </script>
 </head>
 
-<body>
+<body class="bg-slate-900 text-slate-200 min-h-screen relative overflow-x-hidden transition-colors duration-300">
 
-<!-- LOGIN VIEW -->
-<div id="loginView" class="login-wrapper">
-    <!-- LOTTIE ANIMATED BACKGROUND (LOGIN ONLY) -->
-    <lottie-player
-        src="https://lottie.host/fef0dd87-b7ca-430b-b7ff-f306c934d368/WKpgmIC1iO.lottie"
-        background="transparent"
-        speed="1"
-        loop
-        autoplay
-        style="
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.6;
-        ">
-    </lottie-player>
-
-    <div class="login-card">
-        <h1>E-TRAX</h1>
-        <p>Track expenses — smarter. Sign in with Google to continue.</p>
-
-        <button id="googleLoginBtn" class="google-btn" aria-label="Login with Google">
-            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google">
-            <span>Sign in with Google</span>
-        </button>
-
-        <div class="small-note">We only use Google to authenticate you — no payment info required.</div>
-        <div style="margin-top:14px;">
-            <small style="color:var(--text-muted)">Developed by <strong style="color:var(--primary)">ALPHA DEVELOPERS </strong></small>
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500/10 rounded-full blur-[100px] animate-pulse">
+        </div>
+        <div
+            class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-secondary-500/10 rounded-full blur-[100px] animate-pulse delay-1000">
         </div>
     </div>
-</div>
 
-<!-- HEADER -->
-<header id="mainHeader">
-    <div class="header-content">
-        <div class="brand-section">
-            <h1 class="project-name">E-TRAX</h1>
-            <div class="typing" id="typingHeader"></div>
-        </div>
-        
-        <div class="header-controls">
-            <!-- User Profile Container -->
-            <div class="user-profile" id="userProfileContainer">
-                <img src="" alt="Profile" class="profile-pic" id="userProfilePic" style="display: none;">
-                <div class="user-initials" id="userInitials"></div>
-                <div id="userNameDisplay"></div>
+    <!-- LOGIN VIEW -->
+    <div id="loginView"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/90 backdrop-blur-sm">
+        <!-- Lottie BG -->
+        <lottie-player src="https://lottie.host/fef0dd87-b7ca-430b-b7ff-f306c934d368/WKpgmIC1iO.lottie"
+            background="transparent" speed="1" loop autoplay>
+        </lottie-player>
+
+        <div
+            class="glass p-8 md:p-12 rounded-3xl max-w-md w-full text-center relative z-10 border border-white/10 shadow-2xl shadow-primary-500/20">
+            <div
+                class="mb-6 p-4 rounded-2xl bg-gradient-to-tr from-primary-500 to-indigo-600 inline-block shadow-lg shadow-primary-500/30">
+                <span class="material-symbols-outlined text-4xl text-white">account_balance_wallet</span>
             </div>
-            
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-palette"></i>
-                <span>Theme</span>
+
+            <h1 class="font-display text-4xl font-bold text-white mb-2">E-TRAX</h1>
+            <p class="text-slate-400 mb-8">Track expenses smarter. Manage your budget with ease.</p>
+
+            <button id="googleLoginBtn"
+                class="w-full flex items-center justify-center gap-3 bg-white text-slate-900 font-semibold py-3.5 px-6 rounded-xl hover:bg-slate-50 hover:scale-[1.02] transition-all duration-300 shadow-xl">
+                <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google" class="w-5 h-5">
+                <span>Sign in with Google</span>
             </button>
-            
-            <nav class="nav-links">
-                <a href="https://whatsapp.com/channel/0029Va5gnd0CcW4xKICHcb0k" target="_blank" rel="noopener" title="Contact">
-                    <i class="fas fa-phone"></i>
-                    <span>Contact</span>
-                </a>
-                <a href="#" id="aboutLink" title="About">
-                    <i class="fas fa-info-circle"></i>
-                    <span>About</span>
-                </a>
-                <a href="#" id="historyLink" title="History">
-                    <i class="fas fa-history"></i>
-                    <span>History</span>
-                </a>
-                <button id="googleLogoutBtn" title="Logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </button>
-            </nav>
+
+            <p class="mt-6 text-xs text-slate-500">
+                Secure authentication powered by Firebase.<br>We do not store your payment information.
+            </p>
         </div>
     </div>
-</header>
 
-<!-- MAIN CONTAINER -->
-<div class="container my-3">
-    <!-- BUDGET CARD - FIXED: Only shows after login -->
-    <div id="budgetCard" class="card">
-        <div class="card-body">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-                <div>
-                    <h5 style="margin:0;color:var(--warning);">Budget Limit</h5>
-                    <small class="text-muted">Set a monthly/total budget for your expenses</small>
-                </div>
-                <div>
-                    <button id="resetBudgetBtn" class="btn btn-outline-danger btn-sm">Reset Budget</button>
-                </div>
-            </div>
+    <!-- MAIN APP INTERFACE -->
+    <div id="appInterface" class="relative z-10 min-h-screen flex flex-col">
 
-            <!-- BUDGET INPUT AND SAVE BUTTON - FIXED: Inside budget card -->
-            <div class="row g-2 mb-3 align-items-center">
-                <div class="col-md-6 col-lg-7">
-                    <input type="number" id="budgetInput" class="form-control" placeholder="Enter budget amount (e.g. 5000)">
+        <!-- Navbar -->
+        <nav class="sticky top-0 z-40 glass-contrast">
+            <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+                <!-- Branding -->
+                <div class="flex items-center gap-3">
+                    <div
+                        class="p-2 rounded-lg bg-gradient-to-br from-primary-500 to-indigo-600 text-white shadow-lg shadow-primary-500/20">
+                        <span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+                    </div>
+                    <div class="hidden sm:block">
+                        <h1 class="font-display font-bold text-xl tracking-tight text-white leading-none">E-TRAX</h1>
+                        <p id="typingHeader"
+                            class="text-[0.65rem] font-medium text-primary-400 uppercase tracking-widest typing-cursor">
+                        </p>
+                    </div>
                 </div>
-                <div class="col-md-6 col-lg-5">
-                    <button id="saveBudgetBtn" class="btn btn-primary w-100">
-                        <i class="fas fa-save"></i> Save Budget
+
+                <!-- Controls -->
+                <div class="flex items-center gap-2 md:gap-4">
+                    <!-- User Profile -->
+                    <div id="userProfileContainer"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/5">
+                        <img src="" alt="Profile" class="w-6 h-6 rounded-full hidden" id="userProfilePic">
+                        <div class="w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center text-xs font-bold text-white"
+                            id="userInitials" style="display:none;">U</div>
+                        <span id="userNameDisplay"
+                            class="text-sm font-medium text-slate-300 hidden md:block">User</span>
+                    </div>
+
+                    <!-- Actions -->
+                    <button id="themeToggle"
+                        class="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                        title="Toggle Theme">
+                        <span class="material-symbols-outlined text-xl">palette</span>
+                    </button>
+
+                    <button id="googleLogoutBtn"
+                        class="p-2 rounded-full hover:bg-red-500/10 text-slate-400 hover:text-red-400 transition-colors"
+                        title="Logout">
+                        <span class="material-symbols-outlined text-xl">logout</span>
                     </button>
                 </div>
             </div>
+        </nav>
 
-            <div class="text-center mb-2">
-                <div id="budgetStatusText" style="font-weight:600;color:var(--text);">No budget set</div>
-            </div>
+        <!-- Main Content -->
+        <main class="flex-1 container mx-auto px-4 py-8 max-w-6xl">
 
-            <div id="budgetBar" class="mb-2">
-                <div id="budgetProgress" class="progress" style="width:100%">
-                    <div id="budgetProgressBar" class="progress-bar" role="progressbar" style="width:0%"></div>
+            <!-- Top Grid: Budget & Form -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+
+                <!-- Budget Card -->
+                <div id="budgetCard" class="glass rounded-3xl p-6 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <span class="material-symbols-outlined text-8xl text-primary-500">savings</span>
+                    </div>
+
+                    <div class="flex justify-between items-start mb-6 relative z-10">
+                        <div>
+                            <h2 class="text-lg font-bold text-white mb-1">Monthly Budget</h2>
+                            <p class="text-sm text-slate-400">Manage your spending limits</p>
+                        </div>
+                        <button id="resetBudgetBtn"
+                            class="text-xs px-2 py-1 rounded-lg bg-red-500/10 text-red-400 border border-red-500/20 hover:bg-red-500/20 transition-colors">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="relative z-10 space-y-4">
+                        <div class="flex gap-2">
+                            <input type="number" id="budgetInput"
+                                class="flex-1 bg-slate-900/50 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary-500 transition-colors"
+                                placeholder="Set budget amount">
+                            <button id="saveBudgetBtn"
+                                class="bg-primary-500 hover:bg-primary-600 text-white px-4 rounded-xl font-medium transition-colors shadow-lg shadow-primary-500/20">
+                                Save
+                            </button>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span id="budgetStatusText" class="text-sm font-medium text-slate-300">No budget
+                                    set</span>
+                                <span class="text-xs text-slate-500" id="budgetPercentage">0%</span>
+                            </div>
+                            <div class="h-3 w-full bg-slate-800 rounded-full overflow-hidden">
+                                <div id="budgetProgressBar"
+                                    class="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full w-0 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+                                </div>
+                            </div>
+                            <div id="budgetAlerts" class="mt-2 min-h-[20px] text-xs font-medium"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Expense Form -->
+                <div id="expenseFormContainer" class="glass rounded-3xl p-6">
+                    <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary-400">add_circle</span>
+                        Add New Expense
+                    </h2>
+
+                    <form id="expenseForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <input type="hidden" id="editId">
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-medium text-slate-400 ml-1">Name</label>
+                            <input type="text" id="name" required
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-primary-500 transition-colors">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-medium text-slate-400 ml-1">Amount</label>
+                            <input type="number" id="amount" required
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-primary-500 transition-colors">
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-medium text-slate-400 ml-1">Type</label>
+                            <select id="type" required
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-primary-500 transition-colors appearance-none">
+                                <option value="">Select Type...</option>
+                                <option value="Card">💳 Card</option>
+                                <option value="Cash">💵 Cash</option>
+                                <option value="Online">📱 Online (GPay/Paytm)</option>
+                                <option value="Other">🔹 Other</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-1">
+                            <label class="text-xs font-medium text-slate-400 ml-1">Date</label>
+                            <input type="date" id="date" required
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-primary-500 transition-colors text-sm">
+                        </div>
+
+                        <div class="md:col-span-2 space-y-1">
+                            <label class="text-xs font-medium text-slate-400 ml-1">Description</label>
+                            <input type="text" id="description" required
+                                class="w-full bg-slate-900/50 border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-primary-500 transition-colors">
+                        </div>
+
+                        <div class="md:col-span-2 flex gap-3 mt-2">
+                            <button type="reset"
+                                class="px-6 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors font-medium">
+                                Clear
+                            </button>
+                            <button type="submit"
+                                class="flex-1 px-6 py-2 rounded-xl bg-gradient-to-r from-primary-600 to-indigo-600 text-white font-bold hover:shadow-lg hover:shadow-primary-600/20 active:scale-[0.98] transition-all">
+                                Add Expense
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <div id="budgetAlerts" style="min-height:22px;"></div>
-        </div>
-    </div>
+            <!-- Recent Expenses Table -->
+            <div class="glass rounded-3xl p-6 mb-8 overflow-hidden">
+                <div class="flex justify-between items-end mb-6">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary-400">receipt_long</span>
+                        Recent Transactions
+                    </h2>
+                    <div class="text-sm text-slate-400">
+                        Total: <span id="totalExpensesDisplay" class="text-white font-bold text-lg ml-1">₹0</span>
+                    </div>
+                </div>
 
-    <!-- EXPENSE FORM -->
-    <div id="expenseFormContainer" style="display:none;">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-plus-circle"></i> Add New Expense</h5>
+                <div id="tableContainer" class="overflow-x-auto min-h-[200px]">
+                    <!-- Table generated by JS -->
+                    <div class="text-center py-10 text-slate-500">Loading expenses...</div>
+                </div>
             </div>
-            <div class="card-body">
-                <form id="expenseForm" class="row g-3">
-                    <input type="hidden" id="editId">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="amount" class="form-label">Amount</label>
-                        <input type="number" id="amount" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="type" class="form-label">Type</label>
-                        <select id="type" class="form-select" required>
-                            <option value="">Choose one...</option>
-                            <option value="Card">Card</option>
-                            <option value="Cash">Cash</option>
-                            <option value="Gpay/Paytm">Gpay/Paytm</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="description" class="form-label">Description</label>
-                        <input type="text" id="description" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="date" class="form-label">Date</label>
-                        <input type="date" id="date" class="form-control" required>
-                    </div>
-                    <div class="col-12 d-flex justify-content-between mt-3">
-                        <button type="reset" class="btn btn-danger">
-                            <i class="fas fa-times"></i> Clear
-                        </button>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-check"></i> Confirm
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <!-- TABLE -->
-    <div id="tableContainer" class="table-responsive"></div>
-
-    <!-- ANALYTICS -->
-    <div id="analyticsContainer" class="my-4" style="display:none;">
-        <div class="table-container">
-            <h4 class="text-center" style="color:var(--primary);">📊 Expense Analytics</h4>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="chart-container">
+            <!-- Analytics Section -->
+            <div id="analyticsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 hidden">
+                <div class="glass rounded-3xl p-6">
+                    <h3 class="font-bold text-white mb-4 text-center">Spending Trend</h3>
+                    <div class="relative h-64 w-full">
                         <canvas id="lineChart"></canvas>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="chart-container">
+                <div class="glass rounded-3xl p-6">
+                    <h3 class="font-bold text-white mb-4 text-center">Category Breakdown</h3>
+                    <div class="relative h-64 w-full flex justify-center">
                         <canvas id="pieChart"></canvas>
                     </div>
-                    <div id="analyticsBadge" class="text-center mt-3"></div>
+                    <div id="analyticsBadge" class="text-center mt-4 text-sm text-slate-400 italic"></div>
                 </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="border-t border-white/5 bg-slate-900/50 py-8">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex justify-center gap-6 mb-4">
+                    <button id="aboutLink"
+                        class="text-sm text-slate-400 hover:text-white transition-colors">About</button>
+                    <button id="historyLink" class="text-sm text-slate-400 hover:text-white transition-colors">Edit
+                        History</button>
+                    <a href="../terms.html" class="text-sm text-slate-400 hover:text-white transition-colors">Terms</a>
+                    <a href="../privacy.html"
+                        class="text-sm text-slate-400 hover:text-white transition-colors">Privacy</a>
+                    <a href="../contact.html" class="text-sm text-slate-400 hover:text-white transition-colors">Help</a>
+                </div>
+                <p class="text-xs text-slate-600">© 2024 AlphaPrime E-TRAX. Secure & Private.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- TOAST MESSAGE -->
+    <div id="msgBox"
+        class="fixed bottom-6 right-6 z-50 px-6 py-4 rounded-xl shadow-2xl backdrop-blur-md transform transition-all duration-300 translate-y-20 opacity-0"
+        style="display:none;"></div>
+
+    <!-- MODALS -->
+    <!-- About Modal -->
+    <div id="aboutModal"
+        class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass max-w-lg w-full p-8 rounded-3xl relative animate-enter">
+            <button id="closeAbout"
+                class="absolute top-4 right-4 p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <h2 class="text-2xl font-bold text-white mb-4">About E-TRAX</h2>
+            <div class="space-y-4 text-slate-300 text-sm leading-relaxed">
+                <p><strong>E-TRAX</strong> is your personal finance companion designed for privacy and ease of use.</p>
+
+                <h4 class="font-semibold text-primary-400 mt-4">Key Features:</h4>
+                <ul class="space-y-2 pl-4">
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-xs text-emerald-400">check_circle</span>
+                        Real-time expense tracking
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-xs text-emerald-400">check_circle</span>
+                        Visual analytics & trends
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-xs text-emerald-400">check_circle</span>
+                        Budget limits with alerts
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-xs text-emerald-400">check_circle</span>
+                        Secure Cloud Sync (Firebase)
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
 
-<!-- ABOUT MODAL -->
-<div id="aboutModal" class="modal-overlay">
-    <div class="modal-content">
-        <h2>About E-TRAX</h2>
-        <p><strong>E-TRAX</strong> helps you <strong>track your daily expenses</strong> and manage your budget efficiently.</p>
-        <h4>💡 Purpose</h4>
-        <p>Record, categorize, and analyze your spending patterns easily.</p>
-        <h4>⚙️ How It Works</h4>
-        <ul>
-            <li>Add expenses with name, amount, and date.</li>
-            <li>View and edit them anytime.</li>
-            <li>Check total expenses instantly.</li>
-            <li>See visual analytics of your spending trends.</li>
-            <li>Set budget limits and track your spending against them.</li>
-            <li>Track complete edit history with user details.</li>
-        </ul>
-        <div style="text-align:center;">
-            <button id="closeAbout" class="btn btn-primary">Close</button>
+    <!-- History Modal -->
+    <div id="historyModal"
+        class="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="glass max-w-lg w-full p-6 rounded-3xl relative animate-enter flex flex-col max-h-[80vh]">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-bold text-white">Activity Log</h2>
+                <button id="closeHistory" class="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <div id="historyContent" class="overflow-y-auto pr-2 space-y-3 flex-1 scroll-hidden">
+                <!-- Content injected by JS -->
+                <div class="text-center text-slate-500 py-8">Loading history...</div>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- HISTORY MODAL -->
-<div id="historyModal" class="modal-overlay">
-    <div class="modal-content">
-        <h2>📝 Edit History</h2>
-        <div id="historyContent">
-            <p>Loading history...</p>
-        </div>
-        <div style="text-align:center; margin-top: 20px;">
-            <button id="closeHistory" class="btn btn-primary">Close</button>
-        </div>
-    </div>
-</div>
+    <!-- Helper Script for Interactions -->
+    <script src="script.js"></script>
 
-<!-- MESSAGE BOX -->
-<div id="msgBox"></div>
+    <script>
+        // Simple Typing Effect Trigger
+        const texts = ["TRACK EXPENSES", "MANAGE BUDGET", "SAVE MONEY"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
 
-<footer>
-    <div style="display:flex; flex-direction:column; align-items:center; gap:6px;">
-        <div style="display:flex; gap:15px; font-size:0.75rem;">
-            <a href="terms-conditions.html" id="termsLink">Terms & Conditions</a>
-            <a href="privacy-policy.html" id="privacyLink">Privacy Policy</a>
-        </div>
+        (function type() {
+            if (count === texts.length) {
+                count = 0;
+            }
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
 
-        <p style="margin:0;">
-            Email: <a href="mailto:alphaprime.co.in@gmail.com">alphaprime.co.in@gmail.com</a>
-        </p>
+            const typingHeader = document.querySelector("#typingHeader");
+            if (typingHeader) typingHeader.textContent = letter;
 
-        <p style="margin:0;">&copy; 2025 E-TRAX. All rights reserved.</p>
-    </div>
-</footer>
-
-<!-- ================= CUSTOM JAVASCRIPT ================= -->
-<script src="script.js"></script>
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        })();
+    </script>
 </body>
+
 </html>

@@ -1,544 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sitemap | AlphaPrime Tools - Complete Tool Directory</title>
-    <meta name="description" content="Complete sitemap of AlphaPrime Tools. Browse all our privacy-focused online tools including Word Counter, Password Generator, E-TRAX expense tracker, and more.">
+    <meta name="description"
+        content="Complete sitemap of AlphaPrime Tools. Browse all our privacy-focused online tools including Word Counter, Password Generator, E-TRAX expense tracker, and more.">
     <link rel="canonical" href="https://www.alphaprime.co.in/sitemap.html" />
-    
+
     <!-- Open Graph -->
     <meta property="og:title" content="Sitemap | AlphaPrime Tools - Complete Tool Directory">
     <meta property="og:description" content="Browse all privacy-focused online tools from AlphaPrime Tools.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.alphaprime.co.in/sitemap.html">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="AlphaPrime Tools Sitemap">
-    <meta name="twitter:description" content="Complete directory of all our tools and pages.">
-    
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "AlphaPrime Tools Sitemap",
-        "description": "Complete list of all tools and pages available on AlphaPrime Tools",
-        "url": "https://www.alphaprime.co.in/sitemap.html",
-        "numberOfItems": 11,
-        "itemListOrder": "ItemListOrderAscending",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "url": "https://www.alphaprime.co.in/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "Word Counter Tool",
-                "url": "https://www.alphaprime.co.in/Word-counter/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "name": "Password Generator Tool",
-                "url": "https://www.alphaprime.co.in/Password-generator/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "name": "Text Case Converter Tool",
-                "url": "https://www.alphaprime.co.in/Text-Case-Converter/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 5,
-                "name": "Base64 Encode/Decode Tool",
-                "url": "https://www.alphaprime.co.in/Base64-Encode-Decode/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 6,
-                "name": "Image Resizer & Compressor Tool",
-                "url": "https://www.alphaprime.co.in/image-tools/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 7,
-                "name": "E-TRAX Expense Tracker",
-                "url": "https://www.alphaprime.co.in/E-trax-files/"
-            },
-            {
-                "@type": "ListItem",
-                "position": 8,
-                "name": "Privacy Policy",
-                "url": "https://www.alphaprime.co.in/privacy.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 9,
-                "name": "Terms & Conditions",
-                "url": "https://www.alphaprime.co.in/terms.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 10,
-                "name": "About Us",
-                "url": "https://www.alphaprime.co.in/about.html"
-            },
-            {
-                "@type": "ListItem",
-                "position": 11,
-                "name": "Contact Us",
-                "url": "https://www.alphaprime.co.in/contact.html"
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa',
+                            500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+                        },
+                        secondary: {
+                            50: '#f5f3ff', 100: '#ede9fe', 200: '#ddd6fe', 300: '#c4b5fd', 400: '#a78bfa',
+                            500: '#8b5cf6', 600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6', 900: '#4c1d95',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'enter': 'enter 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        enter: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
-        ]
-    }
+        }
     </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #334155;
-            --text-primary: #f8fafc;
-            --text-secondary: #cbd5e1;
-            --accent: #3b82f6;
-            --accent-hover: #2563eb;
-            --border: #475569;
-            --shadow: rgba(0, 0, 0, 0.3);
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            width: 100%;
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 0;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--accent);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-        
-        .theme-toggle {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .theme-toggle:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-        }
-        
-        /* Main Content */
-        main {
-            flex: 1;
-            padding: 3rem 0;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Sitemap Sections */
-        .sitemap-container {
-            display: grid;
-            gap: 2.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .sitemap-section {
-            background: var(--bg-card);
-            border-radius: 12px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 6px var(--shadow);
-        }
-        
-        .sitemap-section h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--border);
-        }
-        
-        .sitemap-links {
-            list-style: none;
-        }
-        
-        .sitemap-links li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-        
-        .sitemap-links li:before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        
-        .sitemap-links a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 1.1rem;
-            display: block;
-            padding: 0.5rem 0;
-            transition: all 0.2s;
-            border-radius: 4px;
-        }
-        
-        .sitemap-links a:hover {
-            color: var(--accent);
-            transform: translateX(4px);
-        }
-        
-        .tool-description {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-top: 0.25rem;
-            display: block;
-        }
-        
-        /* Info Box */
-        .info-box {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            margin-top: 2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .info-box h3 {
-            color: var(--accent);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
-        
-        .info-box p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--bg-secondary);
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-            margin-top: auto;
-        }
-        
-        .footer-content {
-            text-align: center;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-        
-        .copyright {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1.5rem;
-            }
-            
-            .page-header h1 {
-                font-size: 2rem;
-            }
-            
-            .sitemap-section {
-                padding: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 1rem;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .page-header h1 {
-                font-size: 1.75rem;
-            }
-            
-            .sitemap-links a {
-                font-size: 1rem;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">Alpha<span>Prime</span> Tools</a>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="sitemap.html">Sitemap</a>
-                    <a href="contact.html">Contact</a>
-                    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+
+<body class="bg-slate-900 text-slate-200 min-h-screen relative overflow-x-hidden selection:bg-primary-500/30">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary-500/20 rounded-full blur-[100px] animate-blob mix-blend-screen">
+        </div>
+        <div
+            class="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-secondary-500/20 rounded-full blur-[100px] animate-blob animation-delay-2000 mix-blend-screen">
+        </div>
+        <div
+            class="absolute -bottom-32 left-1/3 w-[600px] h-[600px] bg-pink-500/20 rounded-full blur-[100px] animate-blob animation-delay-4000 mix-blend-screen">
+        </div>
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+CjxwYXRoIGQ9Ik0wIDBoNDB2NDBIMHoiIGZpbGw9Im5vbmUiLz4KPHBhdGggZD0iTTAgNDBMMTQwIDBoMjB2MjBMMCA0MHoiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wMSkiLz4KPC9zdmc+')] opacity-20">
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5 backdrop-blur-md bg-slate-900/70">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div
+                    class="p-2 rounded-xl bg-gradient-to-tr from-primary-500 to-indigo-500 text-white shadow-lg shadow-primary-500/20 group-hover:scale-105 transition-transform duration-300">
+                    <span class="material-symbols-outlined text-xl">shield_lock</span>
                 </div>
+                <div class="flex flex-col">
+                    <span class="font-display font-bold text-xl tracking-tight text-white">AlphaPrime</span>
+                    <span class="text-[0.65rem] font-medium text-primary-300 uppercase tracking-wider">Privacy
+                        Tools</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-6">
+                <a href="about.html"
+                    class="text-sm font-medium text-slate-400 hover:text-white transition-colors">About</a>
+                <a href="contact.html"
+                    class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Contact</a>
+                <a href="sitemap.html" class="text-sm font-medium text-white transition-colors">Sitemap</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <a href="index.html" class="p-2 rounded-lg text-slate-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined">home</span>
+                </a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <div class="container">
-            <div class="page-header">
-                <h1>Site Map</h1>
-                <p>A complete directory of all tools and pages available on AlphaPrime Tools. Find exactly what you need quickly and easily.</p>
+    <!-- Main Content -->
+    <main class="relative z-10 container mx-auto px-4 pt-32 pb-16 max-w-4xl">
+
+        <!-- Header -->
+        <div class="text-center mb-16 animate-enter">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-semibold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+                Directory
             </div>
-
-            <div class="sitemap-container">
-                <div class="sitemap-section">
-                    <h2>Main Tools</h2>
-                    <ul class="sitemap-links">
-                        <li>
-                            <a href="index.html">Home Page</a>
-                            <span class="tool-description">Dashboard and featured tools</span>
-                        </li>
-                        <li>
-                            <a href="Word-counter/">Word Counter Tool</a>
-                            <span class="tool-description">Count words, characters, and paragraphs in your text</span>
-                        </li>
-                        <li>
-                            <a href="Password-generator/">Password Generator Tool</a>
-                            <span class="tool-description">Create strong, secure passwords instantly</span>
-                        </li>
-                        <li>
-                            <a href="Text-Case-Converter/">Text Case Converter Tool</a>
-                            <span class="tool-description">Convert text between different case styles</span>
-                        </li>
-                        <li>
-                            <a href="Base64-Encode-Decode/">Base64 Encode/Decode Tool</a>
-                            <span class="tool-description">Encode and decode Base64 strings</span>
-                        </li>
-                        <li>
-                            <a href="image-tools/">Image Resizer & Compressor Tool</a>
-                            <span class="tool-description">Resize and compress images locally in your browser</span>
-                        </li>
-                        <li>
-                            <a href="E-trax-files/">E-TRAX Expense Tracker</a>
-                            <span class="tool-description">Track and manage your personal expenses (Login required)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="sitemap-section">
-                    <h2>Information Pages</h2>
-                    <ul class="sitemap-links">
-                        <li>
-                            <a href="about.html">About Us</a>
-                            <span class="tool-description">Learn about our mission and values</span>
-                        </li>
-                        <li>
-                            <a href="contact.html">Contact Us</a>
-                            <span class="tool-description">Get in touch for support or inquiries</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="sitemap-section">
-                    <h2>Legal & Policy Pages</h2>
-                    <ul class="sitemap-links">
-                        <li>
-                            <a href="privacy.html">Privacy Policy</a>
-                            <span class="tool-description">How we protect your privacy and data</span>
-                        </li>
-                        <li>
-                            <a href="terms.html">Terms & Conditions</a>
-                            <span class="tool-description">Terms of use for our tools and services</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info-box">
-                <h3>About This Sitemap</h3>
-                <p>This sitemap provides a human-readable overview of all pages available on AlphaPrime Tools. All tools except E-TRAX process data locally in your browser and do not require accounts. E-TRAX is our only tool that requires login to save your expense data across devices.</p>
-                <p style="margin-top: 0.5rem;">For the latest additions to our tool collection, please visit the <a href="index.html" style="color: var(--accent); text-decoration: underline;">home page</a>.</p>
-            </div>
+            <h1
+                class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Site Map
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                A complete directory of all tools and pages available on AlphaPrime Tools. Find exactly what you need.
+            </p>
         </div>
+
+        <!-- content blocks -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-enter delay-100">
+
+            <!-- Main Tools -->
+            <div class="glass p-8 rounded-3xl border border-white/5 md:col-span-2 relative overflow-hidden group">
+                <div
+                    class="absolute -right-20 -top-20 w-60 h-60 bg-primary-500/10 rounded-full blur-3xl group-hover:bg-primary-500/20 transition-colors duration-500">
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3 relative z-10">
+                    <span
+                        class="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-indigo-600 text-white shadow-lg shadow-primary-500/20">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </span>
+                    Main Tools
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 relative z-10">
+                    <a href="index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-primary-400">home</span>
+                            <span class="font-semibold text-white">Home Page</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Dashboard and featured tools</p>
+                    </a>
+
+                    <a href="Word-counter/index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-indigo-400">description</span>
+                            <span class="font-semibold text-white">Word Counter</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Count words, characters, paragraphs</p>
+                    </a>
+
+                    <a href="Password-generator/index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-emerald-400">password</span>
+                            <span class="font-semibold text-white">Password Gen</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Create strong, secure passwords</p>
+                    </a>
+
+                    <a href="Text-Case-Converter/index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-orange-400">text_fields</span>
+                            <span class="font-semibold text-white">Case Converter</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Convert text case styles</p>
+                    </a>
+
+                    <a href="Base64-Encode-Decode/index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-cyan-400">code</span>
+                            <span class="font-semibold text-white">Base64 Tool</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Encode and decode Base64</p>
+                    </a>
+
+                    <a href="image-tools/index.html"
+                        class="block p-4 rounded-2xl bg-white/5 hover:bg-white/10 hover:scale-[1.02] transition-all duration-300 border border-white/5 hover:border-white/10">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-purple-400">image</span>
+                            <span class="font-semibold text-white">Image Tools</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Resize and compress locally</p>
+                    </a>
+
+                    <a href="E-trax-files/index.html"
+                        class="block p-4 rounded-2xl bg-gradient-to-br from-indigo-900/50 to-blue-900/50 hover:bg-indigo-900/70 hover:scale-[1.02] transition-all duration-300 border border-indigo-500/30 hover:border-indigo-500/50 col-span-1 sm:col-span-2 lg:col-span-3">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="material-symbols-outlined text-blue-400">account_balance_wallet</span>
+                            <span class="font-semibold text-white">E-TRAX Expense Tracker</span>
+                        </div>
+                        <p class="text-xs text-indigo-200">Track and manage your personal expenses (Login required)</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Info Pages -->
+            <div class="glass p-8 rounded-3xl border border-white/5">
+                <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-teal-400">info</span>
+                    Information
+                </h2>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="about.html" class="flex items-center justify-between group">
+                            <span class="text-slate-300 group-hover:text-white transition-colors">About Us</span>
+                            <span
+                                class="material-symbols-outlined text-slate-500 group-hover:text-teal-400 transition-colors text-sm">arrow_forward</span>
+                        </a>
+                    </li>
+                    <li class="border-t border-white/5 pt-4">
+                        <a href="contact.html" class="flex items-center justify-between group">
+                            <span class="text-slate-300 group-hover:text-white transition-colors">Contact Us</span>
+                            <span
+                                class="material-symbols-outlined text-slate-500 group-hover:text-teal-400 transition-colors text-sm">arrow_forward</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Legal Pages -->
+            <div class="glass p-8 rounded-3xl border border-white/5">
+                <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-slate-400">gavel</span>
+                    Legal
+                </h2>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="privacy.html" class="flex items-center justify-between group">
+                            <span class="text-slate-300 group-hover:text-white transition-colors">Privacy Policy</span>
+                            <span
+                                class="material-symbols-outlined text-slate-500 group-hover:text-slate-200 transition-colors text-sm">arrow_forward</span>
+                        </a>
+                    </li>
+                    <li class="border-t border-white/5 pt-4">
+                        <a href="terms.html" class="flex items-center justify-between group">
+                            <span class="text-slate-300 group-hover:text-white transition-colors">Terms &
+                                Conditions</span>
+                            <span
+                                class="material-symbols-outlined text-slate-500 group-hover:text-slate-200 transition-colors text-sm">arrow_forward</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- About Section -->
+            <div class="glass p-8 rounded-3xl border border-white/5 md:col-span-2 text-center text-sm text-slate-400">
+                <p>All tools except E-TRAX process data locally in your browser for maximum privacy.</p>
+            </div>
+
+        </div>
+
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="terms.html">Terms & Conditions</a>
-                    <a href="about.html">About Us</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="sitemap.html">Sitemap</a>
+    <!-- Footer -->
+    <footer class="border-t border-white/5 bg-black/20 backdrop-blur-xl mt-auto relative z-10">
+        <div class="container mx-auto px-4 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-center md:text-left">
+                    <p class="text-slate-400 text-sm">© <span id="year">2024</span> AlphaPrime Tools. All rights
+                        reserved.</p>
                 </div>
-                <p class="copyright">&copy; <span id="currentYear"></span> AlphaPrime Tools. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <a href="privacy.html" class="text-slate-400 hover:text-white transition-colors text-sm">Privacy</a>
+                    <a href="terms.html" class="text-slate-400 hover:text-white transition-colors text-sm">Terms</a>
+                    <a href="contact.html" class="text-slate-400 hover:text-white transition-colors text-sm">Contact</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        
-        if (savedTheme === 'light') {
-            enableLightMode();
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            if (document.body.classList.contains('light-mode')) {
-                enableDarkMode();
-            } else {
-                enableLightMode();
-            }
-        });
-        
-        function enableLightMode() {
-            document.body.classList.add('light-mode');
-            themeToggle.textContent = 'Dark Mode';
-            localStorage.setItem('theme', 'light');
-            
-            // Update CSS variables for light mode
-            document.documentElement.style.setProperty('--bg-primary', '#ffffff');
-            document.documentElement.style.setProperty('--bg-secondary', '#f8fafc');
-            document.documentElement.style.setProperty('--bg-card', '#ffffff');
-            document.documentElement.style.setProperty('--text-primary', '#1e293b');
-            document.documentElement.style.setProperty('--text-secondary', '#475569');
-            document.documentElement.style.setProperty('--border', '#e2e8f0');
-            document.documentElement.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.05)');
-        }
-        
-        function enableDarkMode() {
-            document.body.classList.remove('light-mode');
-            themeToggle.textContent = 'Light Mode';
-            localStorage.setItem('theme', 'dark');
-            
-            // Reset to dark mode variables
-            document.documentElement.style.setProperty('--bg-primary', '#0f172a');
-            document.documentElement.style.setProperty('--bg-secondary', '#1e293b');
-            document.documentElement.style.setProperty('--bg-card', '#334155');
-            document.documentElement.style.setProperty('--text-primary', '#f8fafc');
-            document.documentElement.style.setProperty('--text-secondary', '#cbd5e1');
-            document.documentElement.style.setProperty('--border', '#475569');
-            document.documentElement.style.setProperty('--shadow', 'rgba(0, 0, 0, 0.3)');
-        }
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
 </html>
