@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Settings - Text Case Converter</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            line-height: 1;
+        }
+        /* Loading Screen Styles */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f6f7f8;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        
+        .dark #loading-screen {
+            background: #101922;
+        }
+        
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #137fec;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #137fec;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .dark .loading-text {
+            color: #60a5fa;
+        }
+        
+        .blur-content {
+            filter: blur(5px);
+            opacity: 0.5;
+            transition: all 0.5s ease-out;
+        }
+        
+        .content-loaded {
+            filter: blur(0);
+            opacity: 1;
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading Settings...</div>
+    </div>
+
+    <!-- Main Content (initially blurred) -->
+    <div id="main-content" class="blur-content">
+        <!-- Header -->
+        <div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-lg border-b border-zinc-300/50 dark:border-zinc-700/50">
+            <div class="flex items-center p-4">
+                <!-- Left Side: Home and Back Buttons -->
+                <div class="flex items-center gap-2">
+                    <button id="home-button" class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white hover:bg-primary/90 transition-all">
+                        <span class="material-symbols-outlined">home</span>
+                    </button>
+                    
+                    <button id="back-btn" class="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-200/60 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                </div>
+
+                <!-- Center: Title -->
+                <h1 class="text-xl font-bold text-zinc-900 dark:text-white flex-1 text-center">Settings</h1>
+
+                <!-- Right Side: Empty space for balance -->
+                <div class="w-10"></div>
+            </div>
+        </div>
+
+        <!-- Settings Content -->
+        <main class="p-4 max-w-2xl mx-auto">
+            <!-- Appearance Section -->
+            <div class="space-y-3 mb-8">
+                <h3 class="text-zinc-500 dark:text-zinc-400 text-sm font-semibold uppercase px-4 pb-1">Appearance</h3>
+                <div class="bg-white dark:bg-zinc-800/50 rounded-xl overflow-hidden">
+                    <div class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+                        <div class="flex items-center gap-4">
+                            <div class="text-white flex items-center justify-center rounded-lg bg-indigo-500 shrink-0 size-10">
+                                <span class="material-symbols-outlined">dark_mode</span>
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-base font-normal leading-normal flex-1 truncate">Dark Mode</p>
+                        </div>
+                        <div class="shrink-0">
+                            <label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full bg-zinc-200 dark:bg-zinc-700 p-0.5 transition-all duration-300">
+                                <input id="theme-toggle" type="checkbox" class="sr-only peer"/>
+                                <div class="h-6 w-6 rounded-full bg-white shadow-lg transform transition-transform peer-checked:translate-x-5"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Section -->
+            <div class="space-y-3 mb-8">
+                <h3 class="text-zinc-500 dark:text-zinc-400 text-sm font-semibold uppercase px-4 pb-1">Data</h3>
+                <div class="bg-white dark:bg-zinc-800/50 rounded-xl overflow-hidden">
+                    <button id="clear-history-btn" class="w-full flex items-center gap-4 px-4 min-h-[56px] justify-between text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="text-white flex items-center justify-center rounded-lg bg-red-500 shrink-0 size-10">
+                                <span class="material-symbols-outlined">delete</span>
+                            </div>
+                            <p class="text-red-500 dark:text-red-400 text-base font-normal leading-normal flex-1 truncate">Clear Conversion History</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Support Section -->
+            <div class="space-y-3 mb-8">
+                <h3 class="text-zinc-500 dark:text-zinc-400 text-sm font-semibold uppercase px-4 pb-1">Support</h3>
+                <div class="bg-white dark:bg-zinc-800/50 rounded-xl overflow-hidden divide-y divide-zinc-200 dark:divide-zinc-700/50">
+                    <button class="w-full flex items-center gap-4 px-4 min-h-[56px] justify-between text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+                        <!-- <div class="flex items-center gap-4">
+                            <div class="text-white flex items-center justify-center rounded-lg bg-sky-500 shrink-0 size-10">
+                                <span class="material-symbols-outlined">feedback</span>
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-base font-normal leading-normal flex-1 truncate">Send Feedback</p>
+                        </div>
+                        <div class="shrink-0 text-zinc-400 dark:text-zinc-500">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div>
+                    </button>
+                    
+                    <button class="w-full flex items-center gap-4 px-4 min-h-[56px] justify-between text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="text-white flex items-center justify-center rounded-lg bg-zinc-500 shrink-0 size-10">
+                                <span class="material-symbols-outlined">shield</span>
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-base font-normal leading-normal flex-1 truncate">Privacy Policy</p>
+                        </div>
+                        <div class="shrink-0 text-zinc-400 dark:text-zinc-500">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div> -->
+                    </button>
+                    
+                    <button class="w-full flex items-center gap-4 px-4 min-h-[56px] justify-between text-left hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all">
+                        <div class="flex items-center gap-4">
+                            <div class="text-white flex items-center justify-center rounded-lg bg-teal-500 shrink-0 size-10">
+                                <span class="material-symbols-outlined">info</span>
+                            </div>
+                            <p class="text-zinc-900 dark:text-white text-base font-normal leading-normal flex-1 truncate">About Us</p>
+                        </div>
+                        <div class="shrink-0 text-zinc-400 dark:text-zinc-500">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- App Version -->
+            <div class="pt-8 pb-8 text-center">
+                <p class="text-zinc-500 dark:text-zinc-400 text-sm">Text Case Converter v1.0.0</p>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // DOM Elements
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
+        const homeButton = document.getElementById('home-button');
+        const backBtn = document.getElementById('back-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        const clearHistoryBtn = document.getElementById('clear-history-btn');
+
+        // Loading Simulation Function
+        function simulateLoading() {
+            return new Promise((resolve) => {
+                // Simulate minimum loading time of 1 second
+                setTimeout(() => {
+                    resolve();
+                }, 1000);
+            });
+        }
+
+        // Hide Loading Screen and Show Content
+        function showContent() {
+            loadingScreen.classList.add('hidden');
+            mainContent.classList.remove('blur-content');
+            mainContent.classList.add('content-loaded');
+        }
+
+        // Initialize Settings Page
+        async function initializeSettings() {
+            // Show loading screen initially
+            loadingScreen.classList.remove('hidden');
+            mainContent.classList.add('blur-content');
+            
+            // Wait for loading simulation
+            await simulateLoading();
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+                themeToggle.checked = true;
+            } else {
+                document.documentElement.classList.remove('dark');
+                themeToggle.checked = false;
+            }
+            
+            // Show content with transition
+            setTimeout(showContent, 300);
+        }
+
+        // Go to Home (Main Page)
+        function goToHome() {
+            // Show loading screen before navigating
+            loadingScreen.classList.remove('hidden');
+            mainContent.classList.add('blur-content');
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 300);
+        }
+
+        // Go Back to Main Page
+        function goBack() {
+            goToHome(); // Same as home since we only have two pages
+        }
+
+        // Toggle Theme
+        function toggleTheme() {
+            if (themeToggle.checked) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Clear History
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all conversion history? This action cannot be undone.')) {
+                localStorage.removeItem('conversionHistory');
+                alert('Conversion history cleared successfully!');
+            }
+        }
+
+        // // Show Feedback
+        // function showFeedback() {
+        //     alert('Thank you for your interest! Feedback feature will be available in the next update.');
+        // }
+
+        // // Show Privacy Policy
+        // function showPrivacyPolicy() {
+        //     alert('Privacy Policy:\n\nWe respect your privacy. This app stores data only in your browser and does not send any information to external servers.\n\nAll data is stored locally using localStorage and is never shared with third parties.');
+        // }
+
+        // Show About
+        function showAbout() {
+            alert('Text Case Converter v1.0.0\n\nA simple yet powerful tool for converting text between different cases.\n\nFeatures:\n• Multiple case conversions\n• Real-time preview\n• History tracking\n• Dark/light mode\n• Mobile responsive\n\nMade with ❤️ for text processing needs.');
+        }
+
+        // Event Listeners
+        homeButton.addEventListener('click', goToHome);
+        backBtn.addEventListener('click', goBack);
+        themeToggle.addEventListener('change', toggleTheme);
+        clearHistoryBtn.addEventListener('click', clearHistory);
+
+        // Support buttons
+        document.querySelectorAll('.bg-white button').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                switch(index) {
+                    case 0: // Send Feedback
+                        showFeedback();
+                        break;
+                    case 1: // Privacy Policy
+                        showPrivacyPolicy();
+                        break;
+                    case 2: // About Us
+                        showAbout();
+                        break;
+                }
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key.toLowerCase()) {
+                    case 'h':
+                        e.preventDefault();
+                        goToHome();
+                        break;
+                    case 'b':
+                        e.preventDefault();
+                        goBack();
+                        break;
+                }
+            }
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                goBack();
+            }
+        });
+
+        // Initialize the settings page
+        document.addEventListener('DOMContentLoaded', initializeSettings);
+    </script>
+</body>
+</html>

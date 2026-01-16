@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+  <!-- ================= BASIC SEO ================= -->
+  <title>Text Case Converter Online – Uppercase, Lowercase & Sentence Case | AlphaPrime</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="Free online Text Case Converter by AlphaPrime. Convert text to UPPERCASE, lowercase, Title Case and Sentence Case instantly. Fast, secure and no login required." />
+
+  <meta name="keywords"
+    content="text case converter, uppercase converter, lowercase converter, sentence case online, title case converter, text tools, alphaprime tools" />
+
+  <meta name="author" content="AlphaPrime" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://www.alphaprime.co.in/tools/text-case-converter/" />
+
+  <!-- ================= OPEN GRAPH ================= -->
+  <meta property="og:title" content="Text Case Converter Online – AlphaPrime" />
+  <meta property="og:description"
+    content="Convert text to uppercase, lowercase, title case and sentence case online using AlphaPrime Text Case Converter." />
+  <meta property="og:url" content="https://www.alphaprime.co.in/tools/text-case-converter/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.alphaprime.co.in/tools/og-text-case.png" />
+
+  <!-- ================= TWITTER CARD ================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Text Case Converter – AlphaPrime" />
+  <meta name="twitter:description"
+    content="Free text case converter tool. Change text to uppercase, lowercase and sentence case instantly." />
+  <meta name="twitter:image" content="https://www.alphaprime.co.in/tools/og-text-case.png" />
+
+  <!-- ================= STRUCTURED DATA ================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Text Case Converter",
+    "operatingSystem": "All",
+    "applicationCategory": "UtilityApplication",
+    "url": "https://www.alphaprime.co.in/tools/text-case-converter/",
+    "description": "Free online text case converter by AlphaPrime. Convert text to uppercase, lowercase, title case and sentence case directly in your browser."
+  }
+  </script>
+
+  <!-- ================= FONTS & UI ================= -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./text-case.css">
+  
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#137fec",
+            "secondary": "#10b981",
+            "background-light": "#f6f7f8",
+            "background-dark": "#101922",
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <div class="loading-text">Loading Text Converter...</div>
+  </div>
+
+  <!-- Main Content (initially blurred) -->
+  <div id="main-content" class="blur-content">
+    <!-- Header -->
+    <div class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-lg border-b border-zinc-300/50 dark:border-zinc-700/50">
+      <div class="flex items-center p-4">
+        <!-- Left Side: Home Button -->
+        <button id="home-button" class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white hover:bg-primary/90 transition-all mr-3">
+         <a href="../index.html"> <span class="material-symbols-outlined">home</span></a>
+        </button>
+
+        <!-- Center: Title -->
+        <div class="flex items-center gap-3 flex-1">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <span class="material-symbols-outlined">text_fields</span>
+          </div>
+          <h1 class="text-xl font-bold text-zinc-900 dark:text-white">Text Case Converter</h1>
+        </div>
+
+        <!-- Right Side: Settings Button -->
+        <button id="settings-btn" class="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-200/60 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="p-4 max-w-4xl mx-auto">
+      <!-- Single Text Box -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between mb-3">
+          <label class="text-zinc-800 dark:text-zinc-300 text-base font-medium">
+            Your Text
+          </label>
+          <div class="flex items-center gap-2">
+            <span id="char-count" class="text-sm text-zinc-500 dark:text-zinc-400">0 chars</span>
+            <div class="w-2 h-2 rounded-full bg-zinc-300 dark:bg-zinc-600"></div>
+            <span id="word-count" class="text-sm text-zinc-500 dark:text-zinc-400">0 words</span>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <textarea 
+            id="text-box"
+            class="w-full rounded-xl border-2 border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white placeholder:text-zinc-500 dark:placeholder:text-zinc-400 p-4 text-base leading-relaxed resize-y min-h-[200px] focus:outline-none focus:border-primary transition-all"
+            placeholder="Type or paste your text here. All conversions will appear in this box..."
+            rows="8"
+            spellcheck="true"
+          ></textarea>
+          
+          <!-- Action Buttons -->
+          <div class="absolute bottom-3 right-3 flex gap-2">
+            <button id="paste-btn" 
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-200/80 dark:bg-zinc-700/80 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-600 transition-all"
+              title="Paste">
+              <span class="material-symbols-outlined">content_paste</span>
+            </button>
+            
+            <button id="copy-btn"
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 hover:bg-green-200 dark:hover:bg-green-800/50 transition-all"
+              title="Copy">
+              <span id="copy-icon" class="material-symbols-outlined">content_copy</span>
+            </button>
+            
+            <button id="clear-btn"
+              class="flex h-10 w-10 items-center justify-center rounded-lg bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-800/50 transition-all"
+              title="Clear">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Buttons -->
+      <div class="mb-6">
+        <h3 class="text-zinc-800 dark:text-zinc-300 text-base font-semibold mb-3">
+          Convert to:
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <button data-case="uppercase" 
+            class="case-btn flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-primary/10 hover:border-primary hover:text-primary dark:hover:text-primary transition-all">
+            <span class="material-symbols-outlined text-sm">arrow_upward</span>
+            UPPERCASE
+          </button>
+          
+          <button data-case="lowercase"
+            class="case-btn flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-primary/10 hover:border-primary hover:text-primary dark:hover:text-primary transition-all">
+            <span class="material-symbols-outlined text-sm">arrow_downward</span>
+            lowercase
+          </button>
+          
+          <button data-case="titlecase"
+            class="case-btn flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-primary/10 hover:border-primary hover:text-primary dark:hover:text-primary transition-all">
+            <span class="material-symbols-outlined text-sm">title</span>
+            Title Case
+          </button>
+          
+          <button data-case="sentencecase"
+            class="case-btn flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-primary/10 hover:border-primary hover:text-primary dark:hover:text-primary transition-all">
+            <span class="material-symbols-outlined text-sm">text_fields</span>
+            Sentence case
+          </button>
+        </div>
+      </div>
+
+      <!-- Additional Actions -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <button id="undo-btn"
+          class="flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-200/60 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all">
+          <span class="material-symbols-outlined">undo</span>
+          Undo Last Action
+        </button>
+        
+        <button id="select-all-btn"
+          class="flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-200/60 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all">
+          <span class="material-symbols-outlined">select_all</span>
+          Select All Text
+        </button>
+      </div>
+
+      <!-- Preview Card -->
+      <div class="mt-8 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-300 dark:border-zinc-700 p-5">
+        <h3 class="text-zinc-800 dark:text-zinc-300 text-base font-semibold mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined">preview</span>
+          Preview
+        </h3>
+        <div id="preview-box" class="bg-zinc-100 dark:bg-zinc-900/50 rounded-lg p-4 min-h-[100px] text-zinc-700 dark:text-zinc-300 text-sm leading-relaxed">
+          Text preview will appear here...
+        </div>
+        <div class="mt-4 pt-4 border-t border-zinc-300/50 dark:border-zinc-700/50">
+          <div class="text-sm text-zinc-600 dark:text-zinc-400 mb-1">Current Case:</div>
+          <div id="current-case" class="font-semibold text-primary">Original Text</div>
+        </div>
+      </div>
+
+      <!-- Explore More Free Tools Section -->
+      <section class="mt-12 mb-8">
+        <div class="bg-white dark:bg-zinc-800 rounded-xl border border-zinc-300 dark:border-zinc-700 p-6">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-2">Explore More Free Tools</h2>
+          <p class="text-zinc-600 dark:text-zinc-400 mb-6">Discover our complete suite of free online tools designed to make your digital tasks easier and more efficient.</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Word Counter Tool -->
+            <a href="/Word-counter/index.html" class="group">
+              <div class="h-full bg-zinc-100 dark:bg-zinc-900/50 rounded-xl border border-zinc-300 dark:border-zinc-700 p-5 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all duration-300">
+                <div class="flex items-start justify-between mb-3">
+                  <div class="p-2.5 rounded-lg bg-blue-100 dark:bg-blue-900/20 group-hover:bg-blue-200 dark:group-hover:bg-blue-900/30 transition-colors">
+                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-lg">format_list_numbered</span>
+                  </div>
+                  <span class="material-symbols-outlined text-zinc-300 dark:text-zinc-600 group-hover:text-primary transition-colors text-sm">arrow_forward</span>
+                </div>
+                <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2 group-hover:text-primary transition-colors">Word Counter</h3>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">Count words, characters, sentences, and paragraphs with detailed text statistics.</p>
+              </div>
+            </a>
+            
+            <!-- Password Generator Tool -->
+            <a href="/Password-generator/index.html" class="group">
+              <div class="h-full bg-zinc-100 dark:bg-zinc-900/50 rounded-xl border border-zinc-300 dark:border-zinc-700 p-5 hover:border-green-500/50 dark:hover:border-green-500/50 hover:shadow-md transition-all duration-300">
+                <div class="flex items-start justify-between mb-3">
+                  <div class="p-2.5 rounded-lg bg-green-100 dark:bg-green-900/20 group-hover:bg-green-200 dark:group-hover:bg-green-900/30 transition-colors">
+                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-lg">key</span>
+                  </div>
+                  <span class="material-symbols-outlined text-zinc-300 dark:text-zinc-600 group-hover:text-green-500 transition-colors text-sm">arrow_forward</span>
+                </div>
+                <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Password Generator</h3>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">Create strong, secure passwords with customizable length and character sets.</p>
+              </div>
+            </a>
+            
+            <!-- Base64 Encode/Decode Tool -->
+            <a href="/Base64-Encode-Decode/index.html" class="group">
+              <div class="h-full bg-zinc-100 dark:bg-zinc-900/50 rounded-xl border border-zinc-300 dark:border-zinc-700 p-5 hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-md transition-all duration-300">
+                <div class="flex items-start justify-between mb-3">
+                  <div class="p-2.5 rounded-lg bg-amber-100 dark:bg-amber-900/20 group-hover:bg-amber-200 dark:group-hover:bg-amber-900/30 transition-colors">
+                    <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-lg">code</span>
+                  </div>
+                  <span class="material-symbols-outlined text-zinc-300 dark:text-zinc-600 group-hover:text-amber-500 transition-colors text-sm">arrow_forward</span>
+                </div>
+                <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Base64 Tool</h3>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">Encode and decode Base64 strings instantly. Perfect for developers and data handling.</p>
+              </div>
+            </a>
+            
+            <!-- Text Case Converter Tool -->
+            <a href="/Text-Case-Converter/index.html" class="group">
+              <div class="h-full bg-zinc-100 dark:bg-zinc-900/50 rounded-xl border border-zinc-300 dark:border-zinc-700 p-5 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all duration-300 border-2 border-primary">
+                <div class="flex items-start justify-between mb-3">
+                  <div class="p-2.5 rounded-lg bg-primary/10 dark:bg-primary/20 group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors">
+                    <span class="material-symbols-outlined text-primary text-lg">text_fields</span>
+                  </div>
+                  <span class="material-symbols-outlined text-primary transition-colors text-sm">check_circle</span>
+                </div>
+                <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2 group-hover:text-primary transition-colors">Text Case Converter</h3>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400">Convert text between uppercase, lowercase, title case, and sentence case.</p>
+              </div>
+            </a>
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-zinc-300/50 dark:border-zinc-700/50">
+            <p class="text-zinc-600 dark:text-zinc-400 text-center text-sm">
+              All our tools are 100% free, work entirely in your browser, and respect your privacy.
+              <a href="/" class="text-primary hover:text-primary/80 dark:hover:text-primary/60 font-medium ml-1">Explore all tools →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEO Content Section -->
+      <section class="mt-8 mb-8">
+        <div class="bg-white dark:bg-zinc-800 rounded-xl border border-zinc-300 dark:border-zinc-700 p-6">
+          <h2 class="text-xl font-bold text-zinc-900 dark:text-white mb-4">Complete Guide to Text Case Conversion</h2>
+          
+          <div class="space-y-4 text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+            <div>
+              <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">What is Text Case Conversion?</h3>
+              <p>Text case conversion is the process of changing the capitalization of letters in written text. This fundamental text manipulation technique serves various purposes, from improving readability and adhering to style guidelines to preparing content for different platforms and formats. Proper text case usage is essential in professional writing, web development, data processing, and content creation.</p>
+            </div>
+            
+            <div>
+              <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Common Text Case Formats</h3>
+              <ul class="list-disc pl-5 space-y-2">
+                <li><strong>UPPERCASE (All Caps):</strong> Converts all letters to capital letters. Useful for emphasis, headings, or programming constants.</li>
+                <li><strong>lowercase (Small Caps):</strong> Converts all letters to small letters. Ideal for creating email addresses, URLs, or standardized text.</li>
+                <li><strong>Title Case (Proper Case):</strong> Capitalizes the first letter of each major word. Used for book titles, article headings, and formal documents.</li>
+                <li><strong>Sentence case:</strong> Capitalizes only the first letter of the first word in each sentence. Standard for paragraphs and body text.</li>
+                <li><strong>Alternating Case:</strong> Alternates between uppercase and lowercase letters. Sometimes used for stylistic purposes.</li>
+                <li><strong>Inverse Case:</strong> Swaps uppercase letters to lowercase and vice versa. Useful for specific formatting needs.</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">How Our Text Case Converter Works</h3>
+              <p>Our Text Case Converter processes your text entirely within your browser using JavaScript, ensuring maximum privacy and speed. When you input text, our algorithm analyzes each character and applies the selected case transformation according to specific rules for each case type. For Title Case, we intelligently handle articles, conjunctions, and prepositions according to standard style guides. The tool maintains formatting, line breaks, and special characters while only modifying letter cases.</p>
+            </div>
+            
+            <div>
+              <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Practical Applications</h3>
+              <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Content Creation:</strong> Prepare articles, blog posts, and social media content with consistent capitalization</li>
+                <li><strong>Academic Writing:</strong> Format research papers, essays, and reports according to citation style guidelines</li>
+                <li><strong>Programming:</strong> Convert variable names, constants, and text strings for coding standards</li>
+                <li><strong>Data Processing:</strong> Standardize text data for databases, spreadsheets, and analysis</li>
+                <li><strong>Marketing Materials:</strong> Create professional headlines, product names, and advertising copy</li>
+                <li><strong>Accessibility:</strong> Improve readability for users with visual impairments or reading difficulties</li>
+                <li><strong>Localization:</strong> Prepare text for different languages with specific capitalization rules</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Best Practices for Text Case Usage</h3>
+              <ul class="list-disc pl-5 space-y-2">
+                <li>Use sentence case for body text and paragraphs to ensure natural reading flow</li>
+                <li>Apply title case consistently across all headings and subheadings in a document</li>
+                <li>Limit uppercase text to short phrases or headings as it can be difficult to read in long passages</li>
+                <li>Consider your audience and platform when choosing text case styles</li>
+                <li>Always preview converted text before finalizing to catch any unintended changes</li>
+                <li>Maintain consistency throughout your document or website</li>
+                <li>Be aware of language-specific capitalization rules when working with multilingual content</li>
+              </ul>
+            </div>
+            
+            <div class="bg-zinc-100 dark:bg-zinc-900/50 p-4 rounded-lg border border-zinc-300/50 dark:border-zinc-700/50">
+              <h4 class="text-base font-semibold text-zinc-800 dark:text-zinc-200 mb-2">Why Choose AlphaPrime Text Case Converter?</h4>
+              <p>Our tool offers several advantages over manual conversion or other online tools. It processes text instantly in your browser without uploading data to external servers, ensuring complete privacy. The intelligent algorithms handle edge cases and exceptions properly, and the clean interface makes conversion effortless. Whether you need to convert a single sentence or thousands of words, our tool provides accurate, consistent results every time.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+<!-- Simple Footer -->
+<footer class="mt-12 py-6 border-t border-zinc-300 dark:border-zinc-700">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="flex flex-col items-center text-center">
+      <p class="text-sm text-zinc-600 dark:text-zinc-400 mb-2">
+        Text Case Converter • All processing done locally in your browser
+      </p>
+      <p class="text-xs text-zinc-500 dark:text-zinc-500">
+        No data is sent to any server • 100% Secure & Private
+      </p>
+    </div>
+  </div>
+</footer>
+  <!-- External JavaScript -->
+  <script src="./text-case.js" defer></script>
+</body>
+</html>

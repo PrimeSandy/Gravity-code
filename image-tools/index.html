@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <!-- ================= BASIC SEO ================= -->
+  <title>Image Resizer & Compressor Online – Free Image Tools | AlphaPrime</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="Resize and compress images online for free. Reduce image size without losing quality using AlphaPrime Image Tools. Fast, secure, no upload to server." />
+
+  <meta name="keywords"
+    content="image resizer online, image compressor online, resize image free, compress image free, reduce image size, image optimization tool, resize and compress images, AlphaPrime tools" />
+
+  <meta name="author" content="AlphaPrime" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://tools.alphaprime.co.in/image-tools/" />
+
+  <!-- ================= OPEN GRAPH (Facebook / WhatsApp) ================= -->
+  <meta property="og:title" content="Image Resizer & Compressor Online – AlphaPrime" />
+  <meta property="og:description"
+    content="Free online image resizer and compressor. Resize images and reduce file size instantly with AlphaPrime Image Tools." />
+  <meta property="og:url" content="https://tools.alphaprime.co.in/image-tools/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://tools.alphaprime.co.in/og-image-tools.png" />
+
+  <!-- ================= TWITTER CARD ================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Image Resizer & Compressor – AlphaPrime" />
+  <meta name="twitter:description"
+    content="Resize and compress images online for free. Fast, private, and browser-based image optimization tool." />
+  <meta name="twitter:image" content="https://tools.alphaprime.co.in/og-image-tools.png" />
+
+  <!-- ================= STRUCTURED DATA (Schema.org) ================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Image Resizer & Compressor",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "url": "https://tools.alphaprime.co.in/image-tools/",
+    "description": "Free online image resizer and compressor by AlphaPrime. Resize images and reduce file size directly in your browser without uploading to any server.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- ================= PERFORMANCE ================= -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- ================= FONTS ================= -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet" />
+
+  <!-- ================= TAILWIND ================= -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    
+    <!-- Theme Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-dark": "#0b5ed7",
+                        "secondary": "#8b5cf6",
+                        "secondary-dark": "#7c3aed",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "error": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.375rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="image-tools.css">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 transition-colors duration-200">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Navigation -->
+        <header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 py-4 sticky top-0 z-50">
+            <div class="flex items-center gap-4">
+                <div class="size-8 text-primary flex items-center justify-center">
+                    <span class="material-symbols-outlined text-3xl">compress</span>
+                </div>
+                <h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-tight">Image Tool</h2>
+            </div>
+            <div class="hidden md:flex flex-1 justify-end gap-8 items-center">
+                <!-- Tab Selection -->
+                <div class="flex items-center gap-2 bg-slate-100 dark:bg-slate-800 rounded-lg p-1">
+                    <button id="tab-compress" class="tab-button active px-4 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined align-middle text-base mr-1">compress</span>
+                        Compress
+                    </button>
+                    <button id="tab-resize" class="tab-button px-4 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined align-middle text-base mr-1">photo_size_select_large</span>
+                        Resize
+                    </button>
+                </div>
+                
+                <!-- Home Button -->
+                <a href="/" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-lg">home</span>
+                    <span>Home</span>
+                </a>
+                
+                <button class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" id="theme-toggle">
+                    <span class="material-symbols-outlined text-lg" id="theme-icon">dark_mode</span>
+                </button>
+                
+                <button class="flex cursor-pointer items-center justify-center rounded-lg h-9 px-5 bg-primary hover:bg-primary-dark text-white text-sm font-bold transition-colors shadow-sm" id="clear-all-btn">
+                    <span class="material-symbols-outlined text-lg mr-2">delete</span>
+                    <span>Clear All</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden flex items-center gap-4">
+                <!-- Mobile Home Button -->
+                <a href="../index.html" class="text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors flex items-center gap-1">
+                    <span class="material-symbols-outlined text-lg">home</span>
+                </a>
+                
+                <!-- Mobile Theme Toggle -->
+                <button class="text-slate-600 dark:text-slate-300 hover:text-primary" id="mobile-theme-toggle">
+                    <span class="material-symbols-outlined text-lg" id="mobile-theme-icon">dark_mode</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="text-slate-600 dark:text-slate-300 hover:text-primary" id="mobile-menu-btn">
+                    <span class="material-symbols-outlined text-2xl">menu</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu-overlay" class="md:hidden fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300">
+            <div class="absolute right-0 top-0 h-full w-64 bg-white dark:bg-slate-900 shadow-xl transform transition-transform duration-300 translate-x-full">
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-8">
+                        <h3 class="text-slate-900 dark:text-white text-lg font-bold">Menu</h3>
+                        <button class="text-slate-400 hover:text-slate-700 dark:hover:text-slate-300 close-mobile-menu">
+                            <span class="material-symbols-outlined text-2xl">close</span>
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Tabs in Mobile Menu -->
+                        <div class="space-y-2">
+                            <h4 class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-2">Tools</h4>
+                            <button id="mobile-menu-compress" class="flex items-center gap-3 w-full p-3 rounded-lg bg-slate-100 dark:bg-slate-800 text-primary font-medium">
+                                <span class="material-symbols-outlined">compress</span>
+                                <span>Compress Images</span>
+                            </button>
+                            <button id="mobile-menu-resize" class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium">
+                                <span class="material-symbols-outlined">photo_size_select_large</span>
+                                <span>Resize Images</span>
+                            </button>
+                        </div>
+                        
+                        <div class="pt-6 border-t border-slate-200 dark:border-slate-800">
+                            <button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium">
+                                <span class="material-symbols-outlined">help</span>
+                                <span>Help & Support</span>
+                            </button>
+                            <button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium">
+                                <span class="material-symbols-outlined">privacy_tip</span>
+                                <span>Privacy Policy</span>
+                            </button>
+                            <button class="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 font-medium">
+                                <span class="material-symbols-outlined">description</span>
+                                <span>Terms of Service</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Clear All Button in Mobile Menu -->
+                        <button class="w-full mt-6 p-3 rounded-lg bg-primary hover:bg-primary-dark text-white font-bold flex items-center justify-center gap-2">
+                            <span class="material-symbols-outlined">delete</span>
+                            <span>Clear All Images</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Tabs -->
+        <div class="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+            <div class="flex justify-center">
+                <div class="flex w-full max-w-md">
+                    <button id="tab-compress-mobile" class="tab-button active flex-1 text-center py-3">
+                        <span class="material-symbols-outlined align-middle text-base mr-1">compress</span>
+                        Compress
+                    </button>
+                    <button id="tab-resize-mobile" class="tab-button flex-1 text-center py-3">
+                        <span class="material-symbols-outlined align-middle text-base mr-1">photo_size_select_large</span>
+                        Resize
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
+            <div class="w-full max-w-6xl flex flex-col gap-8">
+                <!-- Hero Heading -->
+                <div class="text-center space-y-4">
+                    <h1 id="main-title" class="text-slate-900 dark:text-white text-4xl sm:text-5xl font-black tracking-tight leading-tight">
+                        Image Resizer and Compressor Online
+                    </h1>
+                    <p id="main-subtitle" class="text-slate-500 dark:text-slate-400 text-lg sm:text-xl font-normal max-w-2xl mx-auto">
+                        Reduce file size by up to 80% while maintaining perfect quality. Fast, secure, and free.
+                    </p>
+                </div>
+
+                <!-- Upload Area -->
+                <div class="w-full max-w-2xl mx-auto">
+                    <div id="drop-zone" class="drop-zone group relative flex flex-col items-center justify-center gap-6 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800/50 p-8 sm:p-12 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer">
+                        <!-- Icon Circle -->
+                        <div class="flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 text-primary mb-2 transition-transform group-hover:scale-110 duration-300">
+                            <span class="material-symbols-outlined text-4xl">cloud_upload</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2 text-center z-10">
+                            <p class="text-slate-900 dark:text-white text-xl font-bold">Drag your images here</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">or browse from your device</p>
+                        </div>
+                        <input type="file" id="file-input" class="hidden" accept=".jpg,.jpeg,.png,.webp,.gif,.bmp,.tiff" multiple>
+                        <button id="select-images-btn" class="relative flex items-center justify-center rounded-lg h-11 px-8 bg-primary hover:bg-primary-dark text-white text-sm font-bold shadow-md hover:shadow-lg transition-all transform group-hover:-translate-y-0.5 mt-2">
+                            Select Images
+                        </button>
+                        <!-- Absolute pattern for visual interest -->
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMTksIDEyNywgMjM2LCAwLjA1KSIvPjwvc3ZnPg==')] opacity-50 z-0 pointer-events-none rounded-2xl"></div>
+                    </div>
+                </div>
+
+                <!-- Settings Section (Dynamic based on tab) -->
+                <div id="settings-section" class="hidden w-full max-w-2xl mx-auto bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+                    <!-- Compression Settings -->
+                    <div id="compress-settings" class="space-y-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-slate-900 dark:text-white text-xl font-bold">Compression Settings</h3>
+                            <button id="batch-compress-btn" class="flex items-center gap-2 rounded-lg h-9 px-4 bg-success hover:bg-green-700 text-white text-sm font-bold transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-lg">compress</span>
+                                <span>Compress All</span>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="text-slate-700 dark:text-slate-300 text-sm font-medium">Quality</label>
+                                    <span class="text-primary font-bold text-sm"><span id="quality-value">80</span>%</span>
+                                </div>
+                                <input type="range" id="quality-slider" min="10" max="95" value="80" class="w-full">
+                                <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                    <span>Smaller Size</span>
+                                    <span>Better Quality</span>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Output Format</label>
+                                    <select id="output-format" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                        <option value="original">Keep Original</option>
+                                        <option value="jpeg">JPEG</option>
+                                        <option value="png">PNG</option>
+                                        <option value="webp">WebP</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Max Width (px)</label>
+                                    <input type="number" id="max-width" min="100" max="4000" value="1920" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resize Settings -->
+                    <div id="resize-settings" class="hidden space-y-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-slate-900 dark:text-white text-xl font-bold">Resize Settings</h3>
+                            <button id="batch-resize-btn" class="flex items-center gap-2 rounded-lg h-9 px-4 bg-secondary hover:bg-secondary-dark text-white text-sm font-bold transition-colors shadow-sm">
+                                <span class="material-symbols-outlined text-lg">photo_size_select_large</span>
+                                <span>Resize All</span>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- Resize Mode Selection -->
+                            <div>
+                                <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-3 block">Resize Mode</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <button id="resize-mode-custom" class="resize-mode-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors active">
+                                        <span class="material-symbols-outlined text-primary text-2xl">crop_free</span>
+                                        <span class="text-slate-900 dark:text-white font-medium text-sm">Custom Size</span>
+                                    </button>
+                                    <button id="resize-mode-preset" class="resize-mode-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                        <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-2xl">photo_size_select_large</span>
+                                        <span class="text-slate-900 dark:text-white font-medium text-sm">Preset Sizes</span>
+                                    </button>
+                                    <button id="resize-mode-percentage" class="resize-mode-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                                        <span class="material-symbols-outlined text-slate-500 dark:text-slate-400 text-2xl">percent</span>
+                                        <span class="text-slate-900 dark:text-white font-medium text-sm">Percentage</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Custom Size Settings -->
+                            <div id="custom-size-settings" class="space-y-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <label class="text-slate-700 dark:text-slate-300 text-sm font-medium">Maintain Aspect Ratio</label>
+                                    <label class="switch">
+                                        <input type="checkbox" id="aspect-ratio-toggle" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Width (px)</label>
+                                        <input type="number" id="resize-width" min="10" max="5000" value="800" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                    </div>
+                                    
+                                    <div>
+                                        <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Height (px)</label>
+                                        <input type="number" id="resize-height" min="10" max="5000" value="600" class="w-full rounded-lg border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary">
+                                    </div>
+                                </div>
+                                
+                                <!-- Common Aspect Ratios -->
+                                <div>
+                                    <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Common Aspect Ratios</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <button class="aspect-ratio-btn aspect-preview" data-ratio="1:1" data-width="500" data-height="500">
+                                            <div class="text-xs font-medium">1:1</div>
+                                        </button>
+                                        <button class="aspect-ratio-btn aspect-preview" data-ratio="4:3" data-width="800" data-height="600">
+                                            <div class="text-xs font-medium">4:3</div>
+                                        </button>
+                                        <button class="aspect-ratio-btn aspect-preview" data-ratio="16:9" data-width="1280" data-height="720">
+                                            <div class="text-xs font-medium">16:9</div>
+                                        </button>
+                                        <button class="aspect-ratio-btn aspect-preview" data-ratio="3:2" data-width="1200" data-height="800">
+                                            <div class="text-xs font-medium">3:2</div>
+                                        </button>
+                                        <button class="aspect-ratio-btn aspect-preview" data-ratio="9:16" data-width="720" data-height="1280">
+                                            <div class="text-xs font-medium">9:16</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preset Sizes -->
+                            <div id="preset-size-settings" class="hidden space-y-4">
+                                <label class="text-slate-700 dark:text-slate-300 text-sm font-medium mb-2 block">Select Preset Size</label>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="1920" data-height="1080">
+                                        <span class="text-slate-900 dark:text-white font-bold">Full HD</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">1920 × 1080</span>
+                                    </button>
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="1280" data-height="720">
+                                        <span class="text-slate-900 dark:text-white font-bold">HD</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">1280 × 720</span>
+                                    </button>
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="1024" data-height="768">
+                                        <span class="text-slate-900 dark:text-white font-bold">Tablet</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">1024 × 768</span>
+                                    </button>
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="800" data-height="600">
+                                        <span class="text-slate-900 dark:text-white font-bold">Small</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">800 × 600</span>
+                                    </button>
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="640" data-height="480">
+                                        <span class="text-slate-900 dark:text-white font-bold">VGA</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">640 × 480</span>
+                                    </button>
+                                    <button class="preset-size-btn flex flex-col items-center justify-center gap-2 p-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors" data-width="400" data-height="300">
+                                        <span class="text-slate-900 dark:text-white font-bold">Thumbnail</span>
+                                        <span class="text-slate-500 dark:text-slate-400 text-xs">400 × 300</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Percentage Settings -->
+                            <div id="percentage-size-settings" class="hidden space-y-4">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <label class="text-slate-700 dark:text-slate-300 text-sm font-medium">Resize Percentage</label>
+                                        <span class="text-primary font-bold text-sm"><span id="percentage-value">50</span>%</span>
+                                    </div>
+                                    <input type="range" id="percentage-slider" min="10" max="200" value="50" class="w-full">
+                                    <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-1">
+                                        <span>10%</span>
+                                        <span>Original</span>
+                                        <span>200%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uploaded Images List -->
+                <div id="uploaded-list" class="hidden w-full max-w-4xl mx-auto">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-slate-900 dark:text-white text-xl font-bold">Uploaded Images</h3>
+                        <div class="text-sm text-slate-600 dark:text-slate-400">
+                            <span id="total-images">0</span> images selected
+                        </div>
+                    </div>
+                    
+                    <div id="images-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Images will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Progress Section -->
+                <div id="progress-section" class="hidden w-full max-w-2xl mx-auto">
+                    <div class="bg-white dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 id="progress-title" class="text-slate-900 dark:text-white text-xl font-bold">Processing</h3>
+                            <div class="text-sm text-primary font-medium">
+                                <span id="processed-count">0</span>/<span id="total-count">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 mb-4">
+                            <div id="progress-bar" class="bg-primary h-2.5 rounded-full transition-all duration-300" style="width: 0%"></div>
+                        </div>
+                        
+                        <p id="progress-text" class="text-sm text-slate-600 dark:text-slate-400 text-center">Preparing to process images...</p>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div id="results-section" class="hidden w-full max-w-4xl mx-auto">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 id="results-title" class="text-slate-900 dark:text-white text-xl font-bold">Results</h3>
+                        <button id="download-all-btn" class="flex items-center gap-2 rounded-lg h-9 px-4 bg-primary hover:bg-primary-dark text-white text-sm font-bold transition-colors shadow-sm">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            <span>Download All</span>
+                        </button>
+                    </div>
+                    
+                    <div id="results-container" class="space-y-4">
+                        <!-- Results will be dynamically added here -->
+                    </div>
+                </div>
+
+                <!-- Supported Formats Chips -->
+                <div class="flex justify-center flex-wrap gap-3">
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-[16px]">image</span>
+                        JPG
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-[16px]">image</span>
+                        PNG
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-[16px]">image</span>
+                        WEBP
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-[16px]">image</span>
+                        GIF
+                    </div>
+                    <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800/30 text-orange-700 dark:text-orange-400 text-xs font-semibold uppercase tracking-wide">
+                        <span class="material-symbols-outlined text-[16px]">warning</span>
+                        Max 10MB
+                    </div>
+                </div>
+
+                <!-- Feature Section -->
+                <div class="mt-12 w-full">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight">Why use our tool?</h3>
+                            <div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Feature 1 -->
+                            <div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary">
+                                    <span class="material-symbols-outlined">bolt</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold">Lightning Fast</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Advanced algorithms process your images instantly within your browser. No queue times.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Feature 2 -->
+                            <div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="size-12 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+                                    <span class="material-symbols-outlined">verified_user</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold">Privacy First</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        All processing happens locally in your browser. Your images never leave your device.
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- Feature 3 -->
+                            <div class="flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="size-12 rounded-lg bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-secondary">
+                                    <span class="material-symbols-outlined">photo_size_select_large</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold">Compress & Resize</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Two tools in one! Compress to reduce file size or resize to change dimensions - all in one place.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explore More Tools Section -->
+                <div class="mt-12 w-full">
+                    <div class="flex flex-col gap-6">
+                        <div class="flex items-center gap-4">
+                            <h3 class="text-slate-900 dark:text-white text-2xl font-bold tracking-tight">Explore More Tools</h3>
+                            <div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <!-- Base64 Tool -->
+                            <a href="/Base64-Encode-Decode/index.html" class="group flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-all hover:border-primary/50 hover:scale-[1.02]">
+                                <div class="size-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-primary group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30">
+                                    <span class="material-symbols-outlined">code</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold group-hover:text-primary">Base64 Encode/Decode</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Encode and decode Base64 strings instantly. Perfect for developers and data handling.
+                                    </p>
+                                </div>
+                            </a>
+                            
+                            <!-- Password Generator -->
+                            <a href="/Password-generator/index.html" class="group flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-all hover:border-green-500/50 hover:scale-[1.02]">
+                                <div class="size-12 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400 group-hover:bg-green-100 dark:group-hover:bg-green-900/30">
+                                    <span class="material-symbols-outlined">key</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold group-hover:text-green-600">Password Generator</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Create strong, secure passwords with custom length and character types.
+                                    </p>
+                                </div>
+                            </a>
+                            
+                            <!-- Text Case Converter -->
+                            <a href="/Text-Case-Converter/index.html" class="group flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-all hover:border-amber-500/50 hover:scale-[1.02]">
+                                <div class="size-12 rounded-lg bg-amber-50 dark:bg-amber-900/20 flex items-center justify-center text-amber-600 dark:text-amber-400 group-hover:bg-amber-100 dark:group-hover:bg-amber-900/30">
+                                    <span class="material-symbols-outlined">text_fields</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold group-hover:text-amber-600">Text Case Converter</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Convert text between uppercase, lowercase, sentence case, and more.
+                                    </p>
+                                </div>
+                            </a>
+                            
+                            <!-- Word Counter -->
+                            <a href="/Word-counter/index.html" class="group flex flex-col gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-all hover:border-purple-500/50 hover:scale-[1.02]">
+                                <div class="size-12 rounded-lg bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-secondary group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30">
+                                    <span class="material-symbols-outlined">format_list_numbered</span>
+                                </div>
+                                <div class="space-y-2">
+                                    <h4 class="text-slate-900 dark:text-white text-lg font-bold group-hover:text-secondary">Word Counter</h4>
+                                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                        Count words, characters, sentences, and paragraphs with detailed statistics.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Content Section -->
+                <div class="mt-12 w-full bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-8 shadow-sm">
+                    <h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Complete Guide to Image Optimization</h2>
+                    
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">What is Image Compression?</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Image compression is the process of reducing the file size of digital images without significantly compromising visual quality. There are two main types of compression: lossy and lossless. Lossy compression (used by JPEG and WebP formats) removes some image data permanently, achieving higher compression ratios. Lossless compression (used by PNG and GIF) reduces file size without losing any data, perfect for images with text, logos, or transparency. Our tool intelligently applies the optimal compression method based on your image type and quality settings, ensuring the best balance between file size reduction and visual fidelity.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Importance of Image Optimization for Web Performance</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Optimized images are crucial for website performance and user experience. Large image files significantly increase page load times, which directly impacts bounce rates, SEO rankings, and conversion rates. Google's Core Web Vitals specifically measure Largest Contentful Paint (LCP), where images are often the largest elements. By compressing images properly, you can reduce file sizes by 60-80% while maintaining visual quality. This leads to faster loading pages, lower bandwidth costs, better mobile performance, and improved search engine visibility. Our tool helps you achieve optimal image sizes for various use cases, from web banners to product thumbnails.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Understanding Image Resizing vs. Compression</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                While both resizing and compression reduce file size, they work differently. Resizing changes the physical dimensions (width and height in pixels) of an image, making it smaller or larger. Compression reduces the file size by optimizing how the image data is stored, without changing dimensions. The most effective optimization combines both techniques: first resize images to the exact dimensions needed for their display purpose, then apply compression to further reduce file size. Our tool allows you to do both operations in sequence, ensuring you get the smallest possible file sizes for your specific requirements.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">How Our Image Resizer and Compressor Works</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Our tool uses advanced HTML5 Canvas API and JavaScript algorithms to process images entirely in your browser. When you upload images, they are converted to data URLs and processed locally using sophisticated compression algorithms. For compression, we use intelligent quality reduction that prioritizes preserving important details while removing unnecessary data. For resizing, we employ high-quality scaling algorithms that maintain sharpness and clarity. The entire process is secure and private—your images never leave your device, and no data is sent to external servers.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Choosing the Right Image Format</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Different image formats serve different purposes:
+                            </p>
+                            <ul class="list-disc pl-6 text-slate-600 dark:text-slate-400 leading-relaxed space-y-2 mt-2">
+                                <li><strong>JPEG/JPG:</strong> Best for photographs and complex images with many colors. Offers excellent compression with adjustable quality settings.</li>
+                                <li><strong>PNG:</strong> Ideal for images with transparency, text, logos, or simple graphics. Uses lossless compression.</li>
+                                <li><strong>WebP:</strong> Modern format providing superior compression for both lossy and lossless images. Supported by most modern browsers.</li>
+                                <li><strong>GIF:</strong> Suitable for simple animations and images with limited colors (256 colors maximum).</li>
+                                <li><strong>BMP/TIFF:</strong> Uncompressed formats best for professional printing and editing, not recommended for web use.</li>
+                            </ul>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-3">
+                                Our tool automatically suggests the best format based on your image content and use case.
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Best Practices for Image Optimization</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Follow these guidelines for optimal results:
+                            </p>
+                            <ul class="list-disc pl-6 text-slate-600 dark:text-slate-400 leading-relaxed space-y-2 mt-2">
+                                <li>Always resize images to the exact display dimensions needed on your website</li>
+                                <li>For web use, aim for file sizes under 100KB for regular images and under 200KB for hero images</li>
+                                <li>Use JPEG quality between 60-85% for the best balance of quality and file size</li>
+                                <li>Enable progressive loading for JPEGs to improve perceived performance</li>
+                                <li>Use WebP format when possible for the best compression rates</li>
+                                <li>Maintain aspect ratio when resizing to prevent distortion</li>
+                                <li>Batch process multiple images to save time and ensure consistency</li>
+                                <li>Always preview compressed images before downloading to ensure quality meets your standards</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-slate-200 mb-3">Common Use Cases and Applications</h3>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Our image resizer and compressor serves diverse needs across industries:
+                            </p>
+                            <ul class="list-disc pl-6 text-slate-600 dark:text-slate-400 leading-relaxed space-y-2 mt-2">
+                                <li><strong>Website Owners:</strong> Optimize images for faster page loads and better SEO</li>
+                                <li><strong>E-commerce Stores:</strong> Create consistent product image sizes and reduce storage costs</li>
+                                <li><strong>Bloggers & Content Creators:</strong> Prepare images for articles, social media, and newsletters</li>
+                                <li><strong>Social Media Managers:</strong> Resize images to platform-specific dimensions (Instagram, Facebook, Twitter)</li>
+                                <li><strong>Photographers:</strong> Create web-ready versions of high-resolution photos</li>
+                                <li><strong>Students & Educators:</strong> Reduce image sizes for presentations and submissions</li>
+                                <li><strong>Developers:</strong> Optimize images for mobile apps and web applications</li>
+                                <li><strong>Small Businesses:</strong> Prepare marketing materials and digital content</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <h4 class="text-lg font-bold text-slate-900 dark:text-white mb-3">Why Choose AlphaPrime Image Tools?</h4>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Unlike many online image tools, AlphaPrime offers a completely private, browser-based solution. Your images are processed locally on your device using advanced algorithms, ensuring maximum privacy and security. There are no file size limits, no watermarks, no registration requirements, and no hidden fees. Our intuitive interface makes professional image optimization accessible to everyone, from beginners to experts. With batch processing capabilities and detailed compression statistics, you have complete control over your image optimization workflow.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Enhanced Footer -->
+        <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="text-center md:text-left">
+                        <div class="flex items-center gap-3 mb-4">
+                          
+                    </div>
+                </div>
+                
+                <!-- <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 text-center"> -->
+                    <p class="text-slate-500 dark:text-slate-400 text-sm">
+                        © 2024 AlphaPrime Tools. All rights reserved.
+                        <!-- <a href="/sitemap.xml" class="text-primary hover:text-primary-dark ml-2">Sitemap</a> -->
+                    </p>
+                    <p class="text-slate-500 dark:text-slate-400 text-xs mt-2">
+                        All tools process data locally in your browser. No data is stored on our servers.
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Image Processing -->
+    <script src="image-tools.js" defer></script>
+</body>
+</html>

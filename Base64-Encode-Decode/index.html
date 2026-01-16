@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <!-- ================= BASIC SEO ================= -->
+  <title>Base64 Encode Decode Online – Free & Fast Tool | AlphaPrime</title>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="description"
+    content="Encode and decode Base64 strings online instantly. Free, fast and secure Base64 encoder and decoder by AlphaPrime. No login required." />
+
+  <meta name="keywords"
+    content="base64 encode online, base64 decode online, base64 encoder, base64 decoder, online base64 tool, developer tools, alphaprime tools" />
+
+  <meta name="author" content="AlphaPrime" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- ================= CANONICAL ================= -->
+  <link rel="canonical" href="https://www.alphaprime.co.in/Base64-Encode-Decode/" />
+
+  <!-- ================= OPEN GRAPH ================= -->
+  <meta property="og:title" content="Base64 Encode Decode Online – AlphaPrime" />
+  <meta property="og:description"
+    content="Free online Base64 encoder and decoder tool. Encode and decode Base64 strings instantly without signup." />
+  <meta property="og:url" content="https://www.alphaprime.co.in/Base64-Encode-Decode" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.alphaprime.co.in/og-base64.png" />
+
+  <!-- ================= TWITTER CARD ================= -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Base64 Encode Decode – AlphaPrime" />
+  <meta name="twitter:description"
+    content="Encode and decode Base64 text online for free. Fast, secure and browser-based tool." />
+  <meta name="twitter:image" content="https://www.alphaprime.co.in/og-base64.png" />
+
+  <!-- ================= STRUCTURED DATA ================= -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Base64 Encode Decode Tool",
+    "operatingSystem": "All",
+    "applicationCategory": "DeveloperApplication",
+    "url": "https://www.alphaprime.co.in/Base64-Encode-Decode/",
+    "description": "Free online Base64 encoder and decoder tool by AlphaPrime. Runs completely in the browser."
+  }
+  </script>
+
+  <!-- ================= FONTS ================= -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Roboto+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <!-- ================= TAILWIND CSS ================= -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#135bec",
+                    "secondary": "#10b981",
+                    "accent": "#f59e0b",
+                    "background-light": "#f6f6f8",
+                    "background-dark": "#101622",
+                },
+                fontFamily: {
+                    "display": ["Inter", "sans-serif"],
+                    "mono": ["Roboto Mono", "monospace"],
+                },
+                borderRadius: {"DEFAULT": "0.75rem", "lg": "1rem", "xl": "1.25rem", "full": "9999px"},
+                screens: {
+                    'xs': '475px',
+                }
+            },
+        },
+    }
+  </script>
+
+  <!-- ================= CUSTOM CSS ================= -->
+  <link rel="stylesheet" href="./base64.css">
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#111318] dark:text-white min-h-screen flex flex-col overflow-x-hidden antialiased selection:bg-primary/30">
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <div class="loading-text">Loading Base64 Utility...</div>
+    </div>
+
+    <!-- Main Content (initially blurred) -->
+    <div id="main-content" class="blur-content">
+        <!-- Header -->
+        <header class="bg-white dark:bg-[#1A202C] border-b border-[#e5e7eb] dark:border-[#2D3748] sticky top-0 z-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between py-3">
+                    <!-- Left: Logo and Title -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                            <span class="material-symbols-outlined">code</span>
+                        </div>
+                        <div>
+                            <h1 class="text-xl font-bold text-[#111318] dark:text-white">Base64 Utility</h1>
+                            <p class="text-xs text-[#616f89] dark:text-[#A0AEC0] hidden sm:block">Encode & Decode Instantly</p>
+                        </div>
+                    </div>
+
+                    <!-- Center: Status (Desktop only) -->
+                    <div class="hidden md:flex items-center gap-4">
+                        <div class="flex items-center gap-2 bg-[#f0f2f4] dark:bg-[#2D3748] px-3 py-1.5 rounded-lg">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                            <span class="text-sm font-medium text-[#111318] dark:text-white">Ready</span>
+                        </div>
+                        <div class="text-sm text-[#616f89] dark:text-[#A0AEC0]">
+                            <span id="desktop-char-count">0 chars</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Theme Toggle and Home Button -->
+                    <div class="flex items-center gap-2">
+                        <!-- Theme Toggle -->
+                        <button id="theme-toggle" class="flex h-10 w-10 items-center justify-center rounded-xl bg-zinc-200/60 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-all" title="Toggle theme">
+                            <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
+                        </button>
+                        
+                        <!-- Home Button -->
+                        <button id="home-button" class="flex items-center gap-2 h-10 px-4 rounded-xl bg-primary text-white hover:bg-primary/90 transition-all">
+                           <a href="/Word-counter/index.html"> <span class="material-symbols-outlined">home</span>
+                            <span class="hidden sm:inline font-medium">Home</span></a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left Column: Input/Output (Full width on mobile, 2/3 on desktop) -->
+                <div class="lg:col-span-2">
+                    <!-- Main Card -->
+                    <div class="w-full bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748] overflow-hidden">
+                        <!-- Input/Output Section -->
+                        <div class="p-6">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
+                                <div>
+                                    <label class="text-lg font-bold text-[#111318] dark:text-white" for="base64-input">
+                                        Input / Output
+                                    </label>
+                                    <p class="text-sm text-[#616f89] dark:text-[#A0AEC0] mt-1">
+                                        Type or paste your text below
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <span id="status" class="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">Ready</span>
+                                    <span id="char-count" class="text-sm text-[#616f89] dark:text-[#A0AEC0] hidden xs:block">0 chars</span>
+                                </div>
+                            </div>
+                            
+                            <div class="relative group/input">
+                                <textarea 
+                                    id="base64-input" 
+                                    class="form-input w-full min-h-[300px] lg:min-h-[400px] bg-[#f9fafb] dark:bg-[#151a23] border border-[#dbdfe6] dark:border-[#4A5568] rounded-lg text-[#111318] dark:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-mono text-base leading-relaxed p-5 resize-y transition-all placeholder:text-[#9ca3af]"
+                                    placeholder="Paste text here to encode or decode Base64..."
+                                    spellcheck="false"
+                                    rows="12"
+                                ></textarea>
+                                <div class="absolute bottom-4 right-4 pointer-events-none opacity-50">
+                                    <span class="material-symbols-outlined text-xl text-gray-400">code</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="px-6 py-4 bg-[#f9fafb] dark:bg-[#151a23] border-t border-[#e5e7eb] dark:border-[#2D3748]">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button id="encode-btn" class="group relative flex items-center justify-center gap-3 h-14 bg-primary hover:bg-[#114cd6] active:bg-[#0e3ea8] text-white rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                    <span id="encode-icon" class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">enhanced_encryption</span>
+                                    <span class="text-lg font-bold tracking-[0.015em]">Encode to Base64</span>
+                                </button>
+                                <button id="decode-btn" class="group relative flex items-center justify-center gap-3 h-14 bg-secondary hover:bg-[#0da271] active:bg-[#0b8c60] text-white rounded-xl transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                    <span id="decode-icon" class="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">no_encryption</span>
+                                    <span class="text-lg font-bold tracking-[0.015em]">Decode from Base64</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Utility Buttons -->
+                        <div class="px-6 py-4 border-t border-[#e5e7eb] dark:border-[#2D3748]">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <button id="copy-btn" class="flex items-center justify-center gap-3 h-12 bg-[#f0f2f4] dark:bg-[#2D3748] hover:bg-[#e2e4e9] dark:hover:bg-[#4A5568] text-[#111318] dark:text-white rounded-lg transition-colors group">
+                                    <span id="copy-icon" class="material-symbols-outlined text-[20px] text-[#4b5563] dark:text-[#A0AEC0] group-hover:text-primary transition-colors">content_copy</span>
+                                    <span class="text-base font-bold tracking-[0.015em]">Copy Result</span>
+                                </button>
+                                <button id="clear-btn" class="flex items-center justify-center gap-3 h-12 bg-[#f0f2f4] dark:bg-[#2D3748] hover:bg-[#e2e4e9] dark:hover:bg-[#4A5568] text-[#111318] dark:text-white rounded-lg transition-colors group">
+                                    <span class="material-symbols-outlined text-[20px] text-[#4b5563] dark:text-[#A0AEC0] group-hover:text-red-500 transition-colors">delete</span>
+                                    <span class="text-base font-bold tracking-[0.015em]">Clear Text</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Info -->
+                    <div class="mt-6 p-5 bg-white dark:bg-[#1A202C] rounded-xl shadow-sm border border-[#e5e7eb] dark:border-[#2D3748]">
+                        <div class="flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0 mt-0.5">shield</span>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#111318] dark:text-white mb-2">Secure & Private</h3>
+                                <p class="text-[#616f89] dark:text-[#A0AEC0]">
+                                    All Base64 conversions happen locally in your browser. Your data never leaves your device and is not stored on any server. Perfect for sensitive information.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Explore More Tools Section -->
+                    <div class="mt-8 p-6 bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748]">
+                        <h3 class="text-xl font-bold text-[#111318] dark:text-white mb-6 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-primary">explore</span>
+                            Explore More Tools
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <a href="/image-tools/" class="group p-4 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-primary/5 dark:hover:bg-primary/10 rounded-lg border border-[#e5e7eb] dark:border-[#2D3748] transition-all hover:border-primary/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary">image</span>
+                                    <h4 class="font-semibold text-[#111318] dark:text-white group-hover:text-primary">Image Tools</h4>
+                                </div>
+                                <p class="text-sm text-[#616f89] dark:text-[#A0AEC0]">Convert, resize, and optimize images online</p>
+                            </a>
+                            <a href="/Password-generator/" class="group p-4 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-secondary/5 dark:hover:bg-secondary/10 rounded-lg border border-[#e5e7eb] dark:border-[#2D3748] transition-all hover:border-secondary/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-secondary">key</span>
+                                    <h4 class="font-semibold text-[#111318] dark:text-white group-hover:text-secondary">Password Generator</h4>
+                                </div>
+                                <p class="text-sm text-[#616f89] dark:text-[#A0AEC0]">Create strong, secure passwords instantly</p>
+                            </a>
+                            <a href="/Text-Case-Converter/" class="group p-4 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-accent/5 dark:hover:bg-accent/10 rounded-lg border border-[#e5e7eb] dark:border-[#2D3748] transition-all hover:border-accent/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-accent">text_fields</span>
+                                    <h4 class="font-semibold text-[#111318] dark:text-white group-hover:text-accent">Text Case Converter</h4>
+                                </div>
+                                <p class="text-sm text-[#616f89] dark:text-[#A0AEC0]">Convert text between different cases easily</p>
+                            </a>
+                            <a href="/Word-counter/" class="group p-4 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-primary/5 dark:hover:bg-primary/10 rounded-lg border border-[#e5e7eb] dark:border-[#2D3748] transition-all hover:border-primary/30">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="material-symbols-outlined text-primary">format_list_numbered</span>
+                                    <h4 class="font-semibold text-[#111318] dark:text-white group-hover:text-primary">Word Counter</h4>
+                                </div>
+                                <p class="text-sm text-[#616f89] dark:text-[#A0AEC0]">Count words, characters, and sentences</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SEO Content Section -->
+                    <div class="mt-8 p-6 bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748]">
+                        <h2 class="text-2xl font-bold text-[#111318] dark:text-white mb-4">Complete Guide to Base64 Encoding and Decoding</h2>
+                        
+                        <div class="prose dark:prose-invert max-w-none">
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">What is Base64 Encoding?</h3>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format by translating it into a radix-64 representation. It's commonly used when there is a need to encode binary data that needs to be stored and transferred over media designed to deal with text. This encoding helps to ensure that the data remains intact without modification during transport.
+                            </p>
+
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">Common Uses of Base64 Encoding</h3>
+                            <ul class="list-disc pl-5 text-[#616f89] dark:text-[#A0AEC0] mb-4 space-y-2">
+                                <li><strong>Email Attachments:</strong> Base64 is used in MIME (Multipurpose Internet Mail Extensions) to encode email attachments for transmission over SMTP</li>
+                                <li><strong>Data URIs:</strong> Embedding images and other binary data directly into HTML, CSS, or JavaScript files</li>
+                                <li><strong>API Authentication:</strong> Basic authentication headers often use Base64 encoding for credentials</li>
+                                <li><strong>Cryptographic Operations:</strong> Encoding keys, certificates, and signatures in cryptographic applications</li>
+                                <li><strong>Storing Complex Data:</strong> Encoding binary data in XML, JSON, or other text-based formats</li>
+                                <li><strong>Web Development:</strong> Embedding small images directly in CSS to reduce HTTP requests</li>
+                            </ul>
+
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">How Our Base64 Tool Works</h3>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                Our Base64 Encode Decode tool provides a simple, efficient, and secure way to convert between plain text and Base64 encoded strings. The tool operates entirely in your browser using JavaScript, meaning your data never leaves your device. This ensures maximum privacy and security for sensitive information.
+                            </p>
+
+                            <div class="bg-[#f9fafb] dark:bg-[#151a23] p-4 rounded-lg my-6">
+                                <h4 class="font-semibold text-[#111318] dark:text-white mb-2">Key Features:</h4>
+                                <ul class="list-disc pl-5 text-[#616f89] dark:text-[#A0AEC0] space-y-1">
+                                    <li><strong>Instant Conversion:</strong> Real-time encoding and decoding with no delay</li>
+                                    <li><strong>100% Browser-Based:</strong> No server processing required</li>
+                                    <li><strong>No Data Storage:</strong> Your input is never saved or transmitted</li>
+                                    <li><strong>Character Count:</strong> Track input and output sizes in real-time</li>
+                                    <li><strong>Action History:</strong> Keep track of your recent operations</li>
+                                    <li><strong>Keyboard Shortcuts:</strong> Use Ctrl+E to encode, Ctrl+D to decode</li>
+                                    <li><strong>Dark/Light Mode:</strong> Choose your preferred theme</li>
+                                </ul>
+                            </div>
+
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">Technical Details of Base64 Encoding</h3>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                Base64 encoding takes binary data and converts it into ASCII characters. The encoding process involves:
+                            </p>
+                            <ol class="list-decimal pl-5 text-[#616f89] dark:text-[#A0AEC0] mb-4 space-y-2">
+                                <li>Dividing the input into 24-bit groups (3 bytes)</li>
+                                <li>Splitting each 24-bit group into four 6-bit chunks</li>
+                                <li>Converting each 6-bit value into a corresponding Base64 character</li>
+                                <li>Adding padding with '=' characters if the input length isn't divisible by 3</li>
+                            </ol>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                The Base64 alphabet consists of 64 characters: A-Z, a-z, 0-9, plus '+' and '/' for the 62nd and 63rd characters. The '=' character is used for padding.
+                            </p>
+
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">Why Choose Our Base64 Tool?</h3>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                As part of AlphaPrime's suite of developer tools, our Base64 encoder/decoder stands out for several reasons:
+                            </p>
+                            <ul class="list-disc pl-5 text-[#616f89] dark:text-[#A0AEC0] mb-4 space-y-2">
+                                <li><strong>Privacy-First Approach:</strong> All processing happens locally in your browser</li>
+                                <li><strong>No Registration Required:</strong> Completely free with no sign-up needed</li>
+                                <li><strong>Mobile-Friendly:</strong> Works perfectly on all devices and screen sizes</li>
+                                <li><strong>Offline Capable:</strong> Once loaded, the tool works without internet connection</li>
+                                <li><strong>Regular Updates:</strong> Continuously improved with new features and optimizations</li>
+                                <li><strong>Professional Interface:</strong> Clean, intuitive design with no distractions</li>
+                            </ul>
+
+                            <h3 class="text-xl font-semibold text-[#111318] dark:text-white mt-6 mb-3">Best Practices for Using Base64</h3>
+                            <p class="text-[#616f89] dark:text-[#A0AEC0] mb-4">
+                                While Base64 is incredibly useful, there are some considerations to keep in mind:
+                            </p>
+                            <ul class="list-disc pl-5 text-[#616f89] dark:text-[#A0AEC0] space-y-2">
+                                <li><strong>Size Increase:</strong> Base64 encoding increases data size by approximately 33%</li>
+                                <li><strong>Not Encryption:</strong> Base64 is encoding, not encryption—it provides no security</li>
+                                <li><strong>Line Length:</strong> Some implementations require line breaks after 76 characters</li>
+                                <li><strong>Character Sets:</strong> Be aware of character encoding issues with international text</li>
+                                <li><strong>URL Safety:</strong> For URLs, consider Base64URL variant which uses '-' and '_' instead of '+' and '/'</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Stats & History (Full width on mobile, 1/3 on desktop) -->
+                <div class="lg:col-span-1">
+                    <!-- Stats Card -->
+                    <div class="w-full bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748] overflow-hidden mb-6">
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-[#111318] dark:text-white mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">analytics</span>
+                                Statistics
+                            </h3>
+                            <div class="grid grid-cols-2 gap-4 mb-4">
+                                <div class="bg-[#f9fafb] dark:bg-[#151a23] rounded-lg p-4">
+                                    <div class="text-[#616f89] dark:text-[#A0AEC0] text-xs font-medium mb-2">Input Size</div>
+                                    <div id="input-size" class="text-[#111318] dark:text-white text-xl font-bold">0 B</div>
+                                </div>
+                                <div class="bg-[#f9fafb] dark:bg-[#151a23] rounded-lg p-4">
+                                    <div class="text-[#616f89] dark:text-[#A0AEC0] text-xs font-medium mb-2">Output Size</div>
+                                    <div id="output-size" class="text-[#111318] dark:text-white text-xl font-bold">0 B</div>
+                                </div>
+                            </div>
+                            <div class="bg-[#f9fafb] dark:bg-[#151a23] rounded-lg p-4">
+                                <div class="text-[#616f89] dark:text-[#A0AEC0] text-xs font-medium mb-2">Last Action</div>
+                                <div id="last-action" class="text-[#111318] dark:text-white text-sm font-medium">None</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- History Card -->
+                    <div class="w-full bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748] overflow-hidden">
+                        <div class="p-5">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-bold text-[#111318] dark:text-white flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">history</span>
+                                    Recent Actions
+                                </h3>
+                                <button id="clear-history-btn" class="text-sm text-[#616f89] dark:text-[#A0AEC0] hover:text-red-500 transition-colors flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[16px]">delete_sweep</span>
+                                    Clear
+                                </button>
+                            </div>
+                            <div id="history-list" class="space-y-3 max-h-[300px] overflow-y-auto pr-2">
+                                <div class="text-center py-8 text-[#616f89] dark:text-[#A0AEC0] text-sm">
+                                    <span class="material-symbols-outlined text-3xl mb-2 block opacity-50">history_toggle_off</span>
+                                    No actions yet
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions Card -->
+                    <div class="w-full bg-white dark:bg-[#1A202C] rounded-xl shadow-lg border border-[#e5e7eb] dark:border-[#2D3748] overflow-hidden mt-6">
+                        <div class="p-5">
+                            <h3 class="text-lg font-bold text-[#111318] dark:text-white mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary">bolt</span>
+                                Quick Actions
+                            </h3>
+                            <div class="space-y-3">
+                                <button class="quick-action-encode w-full flex items-center justify-between p-3 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-[#f0f2f4] dark:hover:bg-[#1a202c] rounded-lg transition-colors group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-primary">enhanced_encryption</span>
+                                        <span class="font-medium">Encode</span>
+                                    </div>
+                                    <span class="text-xs text-[#616f89] dark:text-[#A0AEC0] group-hover:text-primary">Ctrl+E</span>
+                                </button>
+                                <button class="quick-action-decode w-full flex items-center justify-between p-3 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-[#f0f2f4] dark:hover:bg-[#1a202c] rounded-lg transition-colors group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-secondary">no_encryption</span>
+                                        <span class="font-medium">Decode</span>
+                                    </div>
+                                    <span class="text-xs text-[#616f89] dark:text-[#A0AEC0] group-hover:text-secondary">Ctrl+D</span>
+                                </button>
+                                <button class="quick-action-copy w-full flex items-center justify-between p-3 bg-[#f9fafb] dark:bg-[#151a23] hover:bg-[#f0f2f4] dark:hover:bg-[#1a202c] rounded-lg transition-colors group">
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-accent">content_copy</span>
+                                        <span class="font-medium">Copy Result</span>
+                                    </div>
+                                    <span class="text-xs text-[#616f89] dark:text-[#A0AEC0] group-hover:text-accent">Ctrl+C</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="mt-8 pt-6 border-t border-[#e5e7eb] dark:border-[#2D3748]">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="text-center md:text-left">
+                        <p class="text-[#616f89] dark:text-[#A0AEC0] text-sm">
+                            Base64 Utility v1.0.0 • All processing done locally in your browser
+                        </p>
+                        <p class="text-xs text-[#616f89] dark:text-[#A0AEC0] mt-1">
+                            No data is sent to any server • 100% Secure & Private
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <!--  -->
+                    </div>
+                </div>
+                <!-- Footer Links -->
+                 <center>
+                <div class="mt-4 pt-4 border-t border-[#e5e7eb] dark:border-[#2D3748]">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <div class="text-center md:text-left">
+                            <p class="text-xs text-[#616f89] dark:text-[#A0AEC0]">
+                                © 2024 AlphaPrime Tools. All rights reserved.
+                            </p>
+                        </div>
+                      </div>
+                        </div>
+                        </center>
+                    </div>
+                </div>
+                
+            </footer>
+        </main>
+    </div>
+
+    <!-- ================= JAVASCRIPT ================= -->
+    <script src="base64.js" defer></script>
+</body>
+</html>

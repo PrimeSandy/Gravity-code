@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    
+    <!-- ================= BASIC SEO ================= -->
+    <title>Secure Password Generator Online - Create Strong Passwords | Secure Pass</title>
+    <meta name="description" content="Generate secure, random passwords instantly with our free online password generator. Create strong passwords with customizable length and character sets. No installation required, works entirely in your browser.">
+    <meta name="keywords" content="password generator, secure password generator, random password generator, strong password generator, online password generator, free password generator, password creator, password security">
+    <meta name="author" content="Secure Pass">
+    <meta name="robots" content="index, follow">
+    
+    <!-- ================= CANONICAL URL ================= -->
+    <link rel="canonical" href="https://tools.securepass.example/password-generator/">
+    
+    <!-- ================= OPEN GRAPH TAGS ================= -->
+    <meta property="og:title" content="Secure Password Generator Online - Create Strong Passwords | Secure Pass">
+    <meta property="og:description" content="Generate secure, random passwords instantly with our free online password generator. Create strong passwords with customizable length and character sets.">
+    <meta property="og:url" content="https://tools.securepass.example/password-generator/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tools.securepass.example/images/password-generator-og.jpg">
+    <meta property="og:site_name" content="Secure Pass">
+    
+    <!-- ================= TWITTER CARD TAGS ================= -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Secure Password Generator Online | Secure Pass">
+    <meta name="twitter:description" content="Generate secure, random passwords instantly with our free online password generator. Works entirely in your browser.">
+    <meta name="twitter:image" content="https://tools.securepass.example/images/password-generator-twitter.jpg">
+    
+    <!-- ================= STRUCTURED DATA (Schema.org) ================= -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Secure Password Generator",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript",
+        "url": "https://tools.securepass.example/password-generator/",
+        "description": "Free online password generator that creates strong, secure passwords directly in your browser. Customizable length, character sets, and instant generation with security analysis.",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250"
+        },
+        "featureList": [
+            "Customizable password length",
+            "Multiple character sets",
+            "Strength analysis",
+            "Browser-based security",
+            "Password history",
+            "No server uploads"
+        ]
+    }
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="password-gen.css">
+    <!-- Tailwind Config -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": {
+                            DEFAULT: "#3b82f6",
+                            50: "#eff6ff",
+                            100: "#dbeafe",
+                            500: "#3b82f6",
+                            600: "#2563eb",
+                            700: "#1d4ed8"
+                        },
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "card-dark": "#1e293b",
+                        "card-light": "#ffffff",
+                        "success": "#10b981",
+                        "warning": "#f59e0b",
+                        "danger": "#ef4444"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    spacing: {
+                        '18': '4.5rem',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.3s ease-in-out',
+                        'slide-in': 'slideIn 0.3s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <div class="min-h-screen flex flex-col">
+        <!-- TopAppBar with Home Button -->
+        <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800">
+            <div class="container mx-auto px-4 py-3">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 rounded-lg bg-primary-50 dark:bg-primary-900/20">
+                            <span class="material-symbols-outlined text-primary-600 dark:text-primary-400 text-xl">shield_lock</span>
+                        </div>
+                        <div>
+                            <h1 class="text-lg font-semibold text-gray-900 dark:text-white">Secure Pass</h1>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Professional Password Generator</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <!-- Home Button -->
+                        <a href="../index.html" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-1">
+                            <span class="material-symbols-outlined text-lg">home</span>
+                            <span class="hidden sm:inline text-sm">Home</span>
+                        </a>
+                        
+                        <button id="historyBtn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors relative group">
+                            <span class="material-symbols-outlined">history</span>
+                            <div class="absolute -bottom-1 right-0 w-2 h-2 bg-primary-500 rounded-full hidden group-hover:block"></div>
+                            <span class="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                History
+                            </span>
+                        </button>
+                        <button id="themeToggle" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                            <span class="material-symbols-outlined">dark_mode</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 container mx-auto px-4 py-6 max-w-7xl">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left Column - Generator -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Password Display Card -->
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+                        <div class="p-6 border-b border-slate-200 dark:border-slate-700">
+                            <div class="flex items-center justify-between mb-2">
+                                <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Generated Password</h2>
+                                <span id="passwordLengthBadge" class="px-2 py-1 bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium rounded">16 chars</span>
+                            </div>
+                            <div class="relative group">
+                                <div id="passwordDisplay" class="password-mono text-2xl md:text-3xl font-medium py-4 px-3 bg-slate-50 dark:bg-slate-900/50 rounded-lg border border-slate-200 dark:border-slate-700 min-h-[4rem] flex items-center">
+                                    ••••••••••••••••
+                                </div>
+                                <div class="absolute right-3 top-1/2 transform -translate-y-1/2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button id="toggleVisibility" class="p-1.5 rounded text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700">
+                                        <span class="material-symbols-outlined text-sm">visibility</span>
+                                    </button>
+                                    <button id="refreshBtn" class="p-1.5 rounded text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700">
+                                        <span class="material-symbols-outlined text-sm">refresh</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6 bg-slate-50 dark:bg-slate-900/30">
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <button id="copyBtn" class="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-primary-500 hover:bg-primary-600 text-white font-medium rounded-lg transition-colors active:scale-95">
+                                    <span class="material-symbols-outlined">content_copy</span>
+                                    <span>Copy Password</span>
+                                </button>
+                                <button id="generateBtn" class="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-emerald-500 hover:bg-emerald-600 text-white font-medium rounded-lg transition-colors active:scale-95">
+                                    <span class="material-symbols-outlined">autorenew</span>
+                                    <span>Generate New</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strength Meter -->
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-300">Password Strength</h3>
+                            <span id="strengthText" class="text-sm font-medium text-primary-500">Very Strong</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+                                <div id="strengthBar" class="h-full bg-primary-500 rounded-full transition-all duration-500" style="width: 85%"></div>
+                            </div>
+                            <div class="grid grid-cols-4 gap-1">
+                                <div class="h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                                <div class="h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                                <div class="h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                                <div class="h-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                            </div>
+                            <p id="strengthHint" class="text-xs text-slate-500 dark:text-slate-400 mt-2">
+                                Contains uppercase, lowercase, numbers, and symbols
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Configuration Panel -->
+                    <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 overflow-hidden">
+                        <div class="p-6 border-b border-slate-200 dark:border-slate-700">
+                            <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-300">Password Settings</h3>
+                        </div>
+                        
+                        <div class="divide-y divide-slate-200 dark:divide-slate-700">
+                            <!-- Length Setting -->
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-2">
+                                            <span class="material-symbols-outlined text-slate-500">straighten</span>
+                                            <span class="font-medium text-slate-700 dark:text-slate-300">Password Length</span>
+                                        </div>
+                                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Drag to adjust length</p>
+                                    </div>
+                                    <span id="lengthValue" class="text-lg font-bold text-primary-500">16</span>
+                                </div>
+                                
+                                <div class="relative py-2">
+                                    <input type="range" id="lengthSlider" min="8" max="64" value="16" 
+                                           class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary-500 [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white [&::-webkit-slider-thumb]:dark:border-slate-800 [&::-webkit-slider-thumb]:shadow-lg">
+                                    <div class="flex justify-between text-xs text-slate-500 dark:text-slate-400 mt-2">
+                                        <span>8</span>
+                                        <span>64</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Character Options -->
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20">
+                                                <span class="material-symbols-outlined text-blue-500">match_case</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-slate-700 dark:text-slate-300">Uppercase Letters</p>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">A B C D E F ...</p>
+                                            </div>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="uppercaseToggle" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="p-2 rounded-lg bg-green-50 dark:bg-green-900/20">
+                                                <span class="material-symbols-outlined text-green-500">format_size</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-slate-700 dark:text-slate-300">Lowercase Letters</p>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">a b c d e f ...</p>
+                                            </div>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="lowercaseToggle" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="p-2 rounded-lg bg-purple-50 dark:bg-purple-900/20">
+                                                <span class="material-symbols-outlined text-purple-500">123</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-slate-700 dark:text-slate-300">Numbers</p>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">0 1 2 3 4 5 ...</p>
+                                            </div>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="numbersToggle" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-3">
+                                            <div class="p-2 rounded-lg bg-amber-50 dark:bg-amber-900/20">
+                                                <span class="material-symbols-outlined text-amber-500">alternate_email</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-slate-700 dark:text-slate-300">Special Symbols</p>
+                                                <p class="text-sm text-slate-500 dark:text-slate-400">! @ # $ % ^ ...</p>
+                                            </div>
+                                        </div>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" id="symbolsToggle" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-slate-200 dark:bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-500"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Combined History, Quick Actions & Stats Panel -->
+                <div class="space-y-6">
+                    <!-- Combined Panel (History + Quick Actions + Statistics) -->
+                    <div id="historyPanel" class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 h-full flex flex-col">
+                        <!-- History Section -->
+                        <div class="p-6 border-b border-slate-200 dark:border-slate-700">
+                            <div class="flex items-center justify-between">
+                                <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                                    <span class="material-symbols-outlined">history</span>
+                                    Recent Passwords
+                                </h3>
+                                <div class="flex items-center gap-2">
+                                    <button id="saveBtn" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" title="Save current password">
+                                        <span class="material-symbols-outlined">bookmark_add</span>
+                                    </button>
+                                    <button id="clearHistory" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" title="Clear all history">
+                                        <span class="material-symbols-outlined">delete</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- History List -->
+                        <div class="flex-1 overflow-hidden min-h-[200px]">
+                            <div id="historyList" class="h-full overflow-y-auto p-4 space-y-3">
+                                <!-- History items will be loaded here -->
+                                <div class="text-center py-8 text-slate-400 dark:text-slate-500">
+                                    <span class="material-symbols-outlined text-4xl opacity-50 mb-2">history</span>
+                                    <p class="text-sm">No password history yet</p>
+                                    <p class="text-xs mt-1">Generated passwords will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Actions Section -->
+                        <div class="p-6 border-t border-slate-200 dark:border-slate-700">
+                            <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Quick Actions</h3>
+                            <div class="grid grid-cols-4 gap-3">
+                                <button id="exportBtn" class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary-500 transition-colors text-lg">download</span>
+                                    <span class="text-xs font-medium text-slate-600 dark:text-slate-300">Export</span>
+                                </button>
+                                <button id="importBtn" class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary-500 transition-colors text-lg">upload</span>
+                                    <span class="text-xs font-medium text-slate-600 dark:text-slate-300">Import</span>
+                                </button>
+                                <button id="tipsBtn" class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary-500 transition-colors text-lg">lightbulb</span>
+                                    <span class="text-xs font-medium text-slate-600 dark:text-slate-300">Tips</span>
+                                </button>
+                                <button id="settingsBtn" class="flex flex-col items-center justify-center gap-2 p-3 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors group">
+                                    <span class="material-symbols-outlined text-slate-400 group-hover:text-primary-500 transition-colors text-lg">settings</span>
+                                    <span class="text-xs font-medium text-slate-600 dark:text-slate-300">Settings</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Statistics Section -->
+                        <div class="p-6 border-t border-slate-200 dark:border-slate-700">
+                            <h3 class="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-4">Statistics</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-primary-500" id="totalGenerated">0</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Generated</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-emerald-500" id="totalCopied">0</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Copied</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-amber-500" id="totalSaved">0</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Saved</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-purple-500" id="currentStrength">85%</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1">Avg. Strength</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Footer Note -->
+                        <div class="p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/30">
+                            <p class="text-xs text-slate-500 dark:text-slate-400 text-center">
+                                Passwords are stored locally in your browser
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explore More Free Tools Section -->
+            <section class="mt-12 max-w-7xl mx-auto">
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-8">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Explore More Free Tools</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mb-8">Discover our complete suite of free online tools designed to make your digital tasks easier and more efficient.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Word Counter Tool -->
+                        <a href="/Word-counter/index.html" class="group">
+                            <div class="h-full bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:border-primary-300 dark:hover:border-primary-500 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
+                                        <span class="material-symbols-outlined text-blue-500 text-2xl">format_list_numbered</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-primary-400 transition-colors">arrow_forward</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">Word Counter</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Count words, characters, sentences, and paragraphs with detailed text statistics and analysis.</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Password Generator Tool -->
+                        <a href="/Password-generator/index.html" class="group">
+                            <div class="h-full bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:border-emerald-300 dark:hover:border-emerald-500 hover:shadow-md transition-all duration-300 hover:scale-[1.02] border-2 border-primary-500">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-3 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-900/30 transition-colors">
+                                        <span class="material-symbols-outlined text-emerald-500 text-2xl">key</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-primary-400 transition-colors">check_circle</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Password Generator</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Create strong, secure passwords with customizable length and character sets. Includes strength analysis.</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Base64 Encode/Decode Tool -->
+                        <a href="/Base64-Encode-Decode/index.html" class="group">
+                            <div class="h-full bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:border-amber-300 dark:hover:border-amber-500 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-3 rounded-lg bg-amber-50 dark:bg-amber-900/20 group-hover:bg-amber-100 dark:group-hover:bg-amber-900/30 transition-colors">
+                                        <span class="material-symbols-outlined text-amber-500 text-2xl">code</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-amber-400 transition-colors">arrow_forward</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Base64 Encode/Decode</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Encode text to Base64 format and decode Base64 strings instantly. Perfect for developers and data handling.</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Text Case Converter Tool -->
+                        <a href="/Text-Case-Converter/index.html" class="group">
+                            <div class="h-full bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-slate-700 p-6 hover:border-purple-300 dark:hover:border-purple-500 hover:shadow-md transition-all duration-300 hover:scale-[1.02]">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div class="p-3 rounded-lg bg-purple-50 dark:bg-purple-900/20 group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition-colors">
+                                        <span class="material-symbols-outlined text-purple-500 text-2xl">text_fields</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-purple-400 transition-colors">arrow_forward</span>
+                                </div>
+                                <h3 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Text Case Converter</h3>
+                                <p class="text-sm text-slate-600 dark:text-slate-400">Convert text between uppercase, lowercase, sentence case, title case, and more with a single click.</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+                        <p class="text-slate-600 dark:text-slate-400 text-center text-sm">
+                            All our tools are 100% free, work entirely in your browser, and respect your privacy.
+                            <a href="/" class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 font-medium ml-1">Explore all tools →</a>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO Content Section -->
+            <section class="mt-12 mb-8 max-w-4xl mx-auto">
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700 p-8">
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">About Our Secure Password Generator</h2>
+                    
+                    <div class="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">What is a Password Generator?</h3>
+                            <p>A password generator is a tool that creates random, strong passwords to help protect your online accounts from unauthorized access. Unlike passwords created by humans, which often follow predictable patterns or use personal information, computer-generated passwords are truly random and much harder for hackers to crack. Our Secure Pass generator creates passwords using cryptographic randomness, ensuring each password is unique and highly secure.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Why Strong Passwords Are Essential</h3>
+                            <p>In today's digital world, weak passwords are one of the most common security vulnerabilities. Hackers use sophisticated tools that can guess thousands of passwords per second. A strong password acts as the first line of defense against cyber attacks. According to security experts, a 12-character password with mixed characters takes centuries to crack, while a simple 6-letter password can be broken in minutes. Using unique, strong passwords for each account prevents a single data breach from compromising all your online accounts.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">How Our Password Generator Works</h3>
+                            <p>Our tool uses your browser's built-in cryptographic functions to generate truly random passwords. When you adjust the settings (length, character types), the generator creates passwords by randomly selecting characters from the chosen character sets. The strength meter analyzes your password based on length, character variety, and randomness. All processing happens instantly in your browser—no internet connection is required after the initial page load, and no data is sent to our servers.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Complete Privacy & Security</h3>
+                            <p>Unlike many online password tools, Secure Pass operates entirely within your browser. Your passwords are generated, stored, and managed locally on your device. Nothing is ever uploaded to our servers, ensuring complete privacy. This approach eliminates the risk of server-side data breaches and ensures that even we cannot access your generated passwords. The history feature stores passwords only in your browser's local storage, which you can clear at any time.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Practical Use Cases</h3>
+                            <p>Our password generator is useful for: creating new account passwords, updating weak existing passwords, generating temporary access codes, creating API keys, securing WiFi networks, protecting sensitive documents, and generating passwords for development and testing environments. It's ideal for individuals, businesses, developers, and IT professionals who need to maintain strong security practices.</p>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Security Best Practices</h3>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Use passwords of at least 12 characters for general accounts, and 16+ for sensitive accounts</li>
+                                <li>Always include a mix of uppercase, lowercase, numbers, and symbols</li>
+                                <li>Never reuse passwords across different accounts</li>
+                                <li>Consider using a password manager to store your generated passwords securely</li>
+                                <li>Enable two-factor authentication (2FA) whenever available</li>
+                                <li>Change passwords immediately if a service reports a data breach</li>
+                                <li>Avoid using personal information, dictionary words, or common patterns</li>
+                                <li>Regularly review and update your important passwords every 3-6 months</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                            <div class="text-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg">
+                                <span class="material-symbols-outlined text-primary-500 text-2xl mb-2">shield</span>
+                                <h4 class="font-semibold text-slate-800 dark:text-slate-200">Military-Grade Security</h4>
+                                <p class="text-slate-500 dark:text-slate-400 mt-1">Uses cryptographic randomness for maximum security</p>
+                            </div>
+                            <div class="text-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg">
+                                <span class="material-symbols-outlined text-emerald-500 text-2xl mb-2">visibility_off</span>
+                                <h4 class="font-semibold text-slate-800 dark:text-slate-200">100% Private</h4>
+                                <p class="text-slate-500 dark:text-slate-400 mt-1">Everything stays in your browser—no server uploads</p>
+                            </div>
+                            <div class="text-center p-4 bg-slate-50 dark:bg-slate-900/50 rounded-lg">
+                                <span class="material-symbols-outlined text-amber-500 text-2xl mb-2">auto_awesome</span>
+                                <h4 class="font-semibold text-slate-800 dark:text-slate-200">Customizable</h4>
+                                <p class="text-slate-500 dark:text-slate-400 mt-1">Adjust length, character sets, and complexity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer (Simplified) -->
+        <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col items-center text-center">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 rounded-lg bg-primary-50 dark:bg-primary-900/20">
+                            <span class="material-symbols-outlined text-primary-600 dark:text-primary-400 text-xl">shield_lock</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Secure Pass</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400">Professional Password Generator</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-slate-600 dark:text-slate-400 text-sm max-w-md mb-4">
+                        Generate strong, secure passwords locally in your browser. No data is sent to servers, ensuring complete privacy and security for your credentials.
+                    </p>
+                </div>
+                
+                <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700">
+                    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p class="text-sm text-slate-500 dark:text-slate-400">
+                            <span class="font-medium">Secure Pass v1.0</span> • All passwords are generated locally in your browser
+                        </p>
+                        <span class="text-sm text-slate-500 dark:text-slate-400">© 2024 AlphaPrime Tools. All rights reserved.</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 z-50">
+        <div class="bg-slate-800 text-white px-4 py-3 rounded-lg shadow-xl transform transition-all duration-300 translate-y-10 opacity-0 flex items-center gap-2 min-w-[200px]">
+            <span id="toastIcon" class="material-symbols-outlined text-emerald-400">check_circle</span>
+            <div class="flex-1">
+                <p id="toastMessage" class="text-sm font-medium">Password copied to clipboard!</p>
+            </div>
+            <button id="toastClose" class="text-slate-400 hover:text-white">
+                <span class="material-symbols-outlined text-sm">close</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="password-gen.js"></script>
+</body>
+</html>
