@@ -1,394 +1,194 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    
-    <!-- ================= BASIC SEO META TAGS ================= -->
-    <title>Free Online Word Counter Tool - Count Words, Characters & Reading Time Instantly</title>
 
-    <meta name="description" content="Free online word counter tool that counts words, characters (with/without spaces), sentences, paragraphs, and calculates reading time instantly. Works entirely in your browser with no data uploads.">
-    <meta name="keywords" content="word counter, character counter, text analyzer, sentence counter, paragraph counter, reading time calculator, online word count tool, text statistics, writing tool">
-    <meta name="author" content="AlphaPrime Tools">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    
-    <!-- ================= CANONICAL URL ================= -->
-    <link rel="canonical" href="https://www.alphaprime.co.in/Word-counter/">
-    
-    <!-- ================= OPEN GRAPH TAGS ================= -->
-    <meta property="og:title" content="Free Online Word Counter Tool - Count Words & Characters Instantly">
-    <meta property="og:description" content="Count words, characters, sentences, paragraphs and calculate reading time instantly. No data sent to servers - works entirely in your browser.">
-    <meta property="og:url" content="https://www.alphaprime.co.in/Word-counter/"> 
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.alphaprime.co.in/Word-counter/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="AlphaPrime Tools">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- ================= TWITTER CARD TAGS ================= -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Word Counter Tool - Count Words & Characters Online">
-    <meta name="twitter:description" content="Count words, characters, sentences, paragraphs and calculate reading time instantly. 100% browser-based - no server uploads.">
-    <meta name="twitter:image" content="https://www.alphaprime.co.in/Word-counter/twitter-card.png">
-    
-    <!-- ================= STRUCTURED DATA (Schema.org) ================= -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Word Counter Tool",
-        "applicationCategory": "WritingApplication",
-        "operatingSystem": "All",
-        "browserRequirements": "Requires JavaScript",
-        "url": "https://www.alphaprime.co.in/Word-counter/",
-        "description": "Free online word counter tool that analyzes text locally in your browser. Count words, characters (with and without spaces), sentences, paragraphs, and calculate reading time instantly. No data is uploaded to any server - all processing happens in your browser.",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        },
-        "featureList": [
-            "Word counting",
-            "Character counting (with and without spaces)",
-            "Sentence counting",
-            "Paragraph counting",
-            "Reading time calculator",
-            "Browser-based processing",
-            "No data uploads",
-            "Real-time analysis",
-            "Copy text functionality",
-            "Dark/light mode"
-        ]
-    }
-    </script>
-    
-    <!-- ================= ADDITIONAL META TAGS ================= -->
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
-    <meta name="rating" content="General">
-    <meta name="distribution" content="Global">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
-    <!-- Tailwind CSS -->
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <!-- ================= BASIC SEO META TAGS ================= -->
+    <title>Free Online Word Counter Tool - AlphaPrime Tools</title>
+
+    <meta name="description"
+        content="Free online word counter tool. Count words, characters, sentences, paragraphs, and analyze keyword density instantly. Privacy-focused, local processing.">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind & Main Styles -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="word-counter.css">
-    
+    <link rel="stylesheet" href="../style.css"> <!-- Inherit Main Styles -->
+
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
-                    colors: {
-                        "primary": "#2463eb",
-                        "background-light": "#f6f6f8",
-                        "background-dark": "#0f172a",
-                        "surface-dark": "#1e293b",
-                        "surface-darker": "#020617",
-                    },
                     fontFamily: {
-                        "display": ["Inter", "sans-serif"]
+                        sans: ['Outfit', 'sans-serif'],
                     },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                    colors: {
+                        primary: "#4f46e5",
+                        secondary: "#818cf8",
+                        surface: "#0f172a",
+                    }
                 },
             },
         }
     </script>
-    <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-    </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-200 font-display transition-colors duration-200 min-h-screen flex flex-col">
-    <!-- Header with Navigation -->
-    <header class="sticky top-0 z-50 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-lg border-b border-slate-200 dark:border-slate-700/50">
-        <div class="flex items-center justify-between p-4 max-w-6xl mx-auto">
-            <!-- Left: Logo/Title -->
-            <div class="flex items-center gap-3">
-                <div class="flex items-center justify-center size-10 rounded-xl bg-primary/10">
-                    <span class="material-symbols-outlined text-primary text-2xl">text_fields</span>
-                </div>
-                <span class="text-xl font-bold text-slate-900 dark:text-white hidden md:block">
-                    Word Counter
-                </span>
-            </div>
 
-            <!-- Right: Theme Toggle and Home Button -->
-            <div class="flex items-center gap-2">
-                <!-- Home Button -->
-                <button id="home-button" class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" title="Home">
-                 <a href="https://www.alphaprime.co.in/">   <span class="material-symbols-outlined">home</span></a>
-                </button>
-                
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all" title="Toggle Theme">
-                    <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
-                </button>
+<body class="min-h-screen flex flex-col relative text-gray-100 selection:bg-indigo-500/30 font-sans">
+
+    <!-- Ambient Background -->
+    <div class="ambient-light">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 inset-x-0 z-50 glass-nav transition-all duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="/" class="flex items-center gap-3 no-underline group" aria-label="Back to Home">
+                    <div class="bg-primary/20 p-2 rounded-lg group-hover:bg-primary/40 transition-colors">
+                        <span class="material-symbols-outlined text-primary text-xl">arrow_back</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <div class="text-xl font-bold">Word Counter</div>
+                        <p class="text-xs text-muted-dark">AlphaPrime Tools</p>
+                    </div>
+                </a>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-3">
+                    <button id="theme-toggle"
+                        class="flex items-center justify-center w-10 h-10 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+                        title="Toggle Theme">
+                        <span id="theme-icon" class="material-symbols-outlined text-lg">light_mode</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <div class="relative flex flex-col w-full max-w-md mx-auto md:max-w-3xl min-h-screen p-4 md:p-6 gap-6">
-        <!-- Header Content -->
-        <section class="flex flex-col items-center justify-center space-y-2 pt-4 md:pt-8">
-            <div class="flex items-center justify-center size-16 rounded-xl bg-primary/10 mb-3">
-                <span class="material-symbols-outlined text-primary text-4xl">text_fields</span>
-            </div>
-            <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-center text-slate-900 dark:text-white">
-                Free Online Word Counter Tool
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 relative z-10">
+
+        <!-- Hero Title -->
+        <div class="text-center mb-12 animate-enter">
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight">
+                Analyze Your <span class="text-gradient">Content</span>
             </h1>
-            <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 text-center max-w-xs md:max-w-md leading-relaxed">
-                Count words, characters & reading time instantly
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+                Real-time analysis of words, characters, reading time, and keyword density.
+                100% Client-side.
             </p>
-        </section>
+        </div>
 
-        <!-- Stats Grid -->
-        <section class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-            <!-- Card: Words -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">notes</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Words</span>
-                </div>
-                <span id="words-count" class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">0</span>
-            </div>
-            
-            <!-- Card: Characters -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">abc</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Characters</span>
-                </div>
-                <span id="chars-count" class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">0</span>
-            </div>
-            
-            <!-- Card: Characters (No Space) -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">keyboard_hide</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider truncate">Char (No Spc)</span>
-                </div>
-                <span id="chars-no-space-count" class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">0</span>
-            </div>
-            
-            <!-- Card: Sentences -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">short_text</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Sentences</span>
-                </div>
-                <span id="sentences-count" class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">0</span>
-            </div>
-            
-            <!-- Card: Paragraphs -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">format_paragraph</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Paragraphs</span>
-                </div>
-                <span id="paragraphs-count" class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">0</span>
-            </div>
-            
-            <!-- Card: Reading Time -->
-            <div class="flex flex-col p-4 bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-700/50 rounded-xl shadow-sm">
-                <div class="flex items-center gap-2 mb-1">
-                    <span class="material-symbols-outlined text-slate-400 text-[20px]">timer</span>
-                    <span class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Read Time</span>
-                </div>
-                <span id="reading-time" class="text-2xl font-bold text-primary tracking-tight">0m</span>
-            </div>
-        </section>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
 
-        <!-- Input Area -->
-        <main class="flex-1 flex flex-col gap-4">
-            <div class="relative flex-1 group">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-blue-400/50 rounded-xl blur opacity-0 group-focus-within:opacity-20 transition duration-500"></div>
-                <textarea id="text-input" class="relative w-full h-full min-h-[280px] p-5 bg-white dark:bg-surface-darker text-slate-900 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-600 border border-slate-200 dark:border-slate-800 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-base leading-relaxed transition-shadow shadow-inner font-mono" placeholder="Type or paste your text here..."></textarea>
-                <div class="absolute bottom-4 right-4 text-xs text-slate-400 pointer-events-none opacity-50">
-                    Supports Markdown
-                </div>
-            </div>
-            
-            <!-- Action Buttons -->
-            <div class="grid grid-cols-2 gap-3">
-                <button id="copy-btn" class="flex items-center justify-center gap-2 px-6 py-3.5 bg-primary hover:bg-blue-600 text-white font-medium rounded-lg transition-all active:scale-[0.98] shadow-lg shadow-primary/25">
-                    <span id="copy-icon" class="material-symbols-outlined text-[20px]">content_copy</span>
-                    <span>Copy Text</span>
-                </button>
-                <button id="clear-btn" class="flex items-center justify-center gap-2 px-6 py-3.5 bg-slate-100 dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium rounded-lg border border-slate-200 dark:border-slate-700 transition-all active:scale-[0.98]">
-                    <span class="material-symbols-outlined text-[20px]">delete_sweep</span>
-                    <span>Clear Text</span>
-                </button>
-            </div>
-        </main>
+            <!-- Left: Input Area -->
+            <div class="lg:col-span-2 space-y-6 animate-enter delay-1">
+                <!-- Text Area Card -->
+                <div class="glass-panel p-1 rounded-2xl relative group">
+                    <div
+                        class="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-600 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500">
+                    </div>
+                    <div class="relative bg-black/40 backdrop-blur-xl rounded-xl p-6 h-[500px] flex flex-col">
+                        <textarea id="text-input"
+                            class="w-full h-full bg-transparent border-none focus:ring-0 text-gray-200 placeholder-gray-600 resize-none text-lg leading-relaxed font-mono"
+                            placeholder="Type or paste your text here to begin analysis..."></textarea>
 
-        <!-- Explore More Free Tools Section -->
-        <section class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
-            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-2">Explore More Free Tools</h2>
-                <p class="text-slate-600 dark:text-slate-400 mb-6">Discover our complete suite of free online tools designed to make your digital tasks easier and more efficient.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Word Counter Tool -->
-                    <a href="/Word-counter/" class="group">
-                        <div class="h-full bg-slate-50 dark:bg-surface-darker rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-primary/50 dark:hover:border-primary/50 hover:shadow-md transition-all duration-300 border-2 border-primary">
-                            <div class="flex items-start justify-between mb-3">
-                                <div class="p-2.5 rounded-lg bg-blue-100 dark:bg-blue-900/20 group-hover:bg-blue-200 dark:group-hover:bg-blue-900/30 transition-colors">
-                                    <span class="material-symbols-outlined text-blue-600 dark:text-blue-400 text-lg">format_list_numbered</span>
-                                </div>
-                                <span class="material-symbols-outlined text-primary transition-colors text-sm">check_circle</span>
+                        <div class="flex items-center justify-between mt-4 border-t border-white/10 pt-4">
+                            <span class="text-xs text-gray-500">Supports Markdown input</span>
+                            <div class="flex gap-2">
+                                <button id="copy-btn"
+                                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-primary/20 hover:text-primary transition-all text-sm font-medium text-gray-400">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                                <button id="clear-btn"
+                                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-red-500/20 hover:text-red-400 transition-all text-sm font-medium text-gray-400">
+                                    <span class="material-symbols-outlined text-sm">delete</span> Clear
+                                </button>
                             </div>
-                            <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-primary transition-colors">Word Counter</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">Count words, characters, sentences, and paragraphs with detailed statistics.</p>
                         </div>
-                    </a>
-                    
-                    <!-- Password Generator Tool -->
-                    <a href="/Password-generator/index.html" class="group">
-                        <div class="h-full bg-slate-50 dark:bg-surface-darker rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-green-500/50 dark:hover:border-green-500/50 hover:shadow-md transition-all duration-300">
-                            <div class="flex items-start justify-between mb-3">
-                                <div class="p-2.5 rounded-lg bg-green-100 dark:bg-green-900/20 group-hover:bg-green-200 dark:group-hover:bg-green-900/30 transition-colors">
-                                    <span class="material-symbols-outlined text-green-600 dark:text-green-400 text-lg">key</span>
-                                </div>
-                                <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-green-500 transition-colors text-sm">arrow_forward</span>
-                            </div>
-                            <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">Password Generator</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">Create strong, secure passwords with customizable length and character sets.</p>
-                        </div>
-                    </a>
-                    
-                    <!-- Base64 Encode/Decode Tool -->
-                    <a href="/Base64-Encode-Decode/index.html" class="group">
-                        <div class="h-full bg-slate-50 dark:bg-surface-darker rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-amber-500/50 dark:hover:border-amber-500/50 hover:shadow-md transition-all duration-300">
-                            <div class="flex items-start justify-between mb-3">
-                                <div class="p-2.5 rounded-lg bg-amber-100 dark:bg-amber-900/20 group-hover:bg-amber-200 dark:group-hover:bg-amber-900/30 transition-colors">
-                                    <span class="material-symbols-outlined text-amber-600 dark:text-amber-400 text-lg">code</span>
-                                </div>
-                                <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-amber-500 transition-colors text-sm">arrow_forward</span>
-                            </div>
-                            <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">Base64 Tool</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">Encode and decode Base64 strings instantly. Perfect for developers and data handling.</p>
-                        </div>
-                    </a>
-                    
-                    <!-- Text Case Converter Tool -->
-                    <a href="/Text-Case-Converter/index.html" class="group">
-                        <div class="h-full bg-slate-50 dark:bg-surface-darker rounded-xl border border-slate-200 dark:border-slate-700 p-5 hover:border-purple-500/50 dark:hover:border-purple-500/50 hover:shadow-md transition-all duration-300">
-                            <div class="flex items-start justify-between mb-3">
-                                <div class="p-2.5 rounded-lg bg-purple-100 dark:bg-purple-900/20 group-hover:bg-purple-200 dark:group-hover:bg-purple-900/30 transition-colors">
-                                    <span class="material-symbols-outlined text-purple-600 dark:text-purple-400 text-lg">text_fields</span>
-                                </div>
-                                <span class="material-symbols-outlined text-slate-300 dark:text-slate-600 group-hover:text-purple-500 transition-colors text-sm">arrow_forward</span>
-                            </div>
-                            <h3 class="text-base font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Text Case Converter</h3>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">Convert text between uppercase, lowercase, title case, and sentence case.</p>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
-                    <p class="text-slate-600 dark:text-slate-400 text-center text-sm">
-                        All our tools are 100% free, work entirely in your browser, and respect your privacy.
-                        <a href="/" class="text-primary hover:text-primary/80 dark:hover:text-primary/60 font-medium ml-1">Explore all tools →</a>
-                    </p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <!-- SEO Content Section -->
-        <section class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800">
-            <div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 p-6">
-                <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">About Our Word Counter Tool</h2>
-                
-                <div class="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">What is a Word Counter?</h3>
-                        <p>A word counter is an essential tool for writers, students, content creators, and professionals who need to track the length of their text. Our free online word counter provides instant analysis of your text, counting words, characters (with and without spaces), sentences, paragraphs, and even estimating reading time. This tool is particularly useful for meeting word count requirements in essays, articles, social media posts, and professional documents.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Why Word Count Matters</h3>
-                        <p>Word count is crucial for various writing contexts. Academic papers have strict word limits, SEO-optimized content requires specific lengths, social media platforms have character restrictions, and publishers have formatting requirements. Our tool helps you stay within these limits while ensuring your content is properly structured. The character count (with and without spaces) is especially important for Twitter posts, meta descriptions, and other platforms with strict character limits.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">How Our Word Counter Works</h3>
-                        <p>Our tool analyzes your text in real-time as you type or paste. It uses sophisticated algorithms to accurately count words (based on spaces between them), characters (including all letters, numbers, and symbols), sentences (based on punctuation marks), and paragraphs (separated by line breaks). The reading time calculator estimates how long it would take an average reader to go through your content at 200-250 words per minute. All processing happens locally in your browser - no data is ever uploaded to our servers.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Complete Privacy & Security</h3>
-                        <p>Unlike many online word counters that upload your text to their servers, our tool operates entirely within your browser. Your text never leaves your device, ensuring complete privacy and security. This is especially important when working with sensitive documents, confidential information, or unpublished creative work. You can use our tool with complete confidence that your content remains private and secure.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Practical Use Cases</h3>
-                        <p>Our word counter is useful for: students checking essay lengths, bloggers optimizing content for SEO, social media managers crafting posts within character limits, authors tracking manuscript progress, translators ensuring accurate word counts, marketers writing ad copy, journalists meeting editorial requirements, and anyone who needs to monitor text length. The tool supports various languages and writing formats, including Markdown syntax.</p>
-                    </div>
-                    
-                    <div>
-                        <h3 class="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-3">Writing Best Practices</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li>Aim for 300-500 words for blog posts for optimal SEO performance</li>
-                            <li>Keep paragraphs to 3-5 sentences for better readability</li>
-                            <li>Twitter posts should be under 280 characters</li>
-                            <li>Meta descriptions work best at 150-160 characters</li>
-                            <li>Academic papers often have 250-300 word abstracts</li>
-                            <li>Email subject lines should be under 50 characters</li>
-                            <li>Mobile-friendly content uses shorter sentences and paragraphs</li>
-                            <li>Reading time of 5-7 minutes is ideal for most online articles</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                        <div class="text-center p-4 bg-slate-50 dark:bg-surface-darker rounded-lg">
-                            <span class="material-symbols-outlined text-primary text-2xl mb-2">speed</span>
-                            <span class="font-semibold text-slate-800 dark:text-slate-200 block mb-1">Real-Time Analysis</span>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs">Instant word and character counting as you type</p>
-                        </div>
-                        <div class="text-center p-4 bg-slate-50 dark:bg-surface-darker rounded-lg">
-                            <span class="material-symbols-outlined text-emerald-500 text-2xl mb-2">lock</span>
-                            <span class="font-semibold text-slate-800 dark:text-slate-200 block mb-1">100% Private</span>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs">Your text never leaves your browser</p>
-                        </div>
-                        <div class="text-center p-4 bg-slate-50 dark:bg-surface-darker rounded-lg">
-                            <span class="material-symbols-outlined text-amber-500 text-2xl mb-2">diversity_3</span>
-                            <span class="font-semibold text-slate-800 dark:text-slate-200 block mb-1">Multiple Metrics</span>
-                            <p class="text-slate-500 dark:text-slate-400 text-xs">Words, characters, sentences, paragraphs & reading time</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <!-- Right: Stats Sidebar -->
+            <div class="space-y-6 animate-enter delay-2">
 
-        <!-- Footer -->
-        <footer class="py-8 text-center border-t border-slate-200 dark:border-slate-800 mt-6">
-            <div class="flex flex-col items-center gap-4">
-                <div class="inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-surface-dark/50 border border-slate-200 dark:border-slate-800">
-                    <span class="material-symbols-outlined text-slate-400 text-[16px]">security</span>
-                    <span class="text-xs text-slate-500 dark:text-slate-400 font-medium">All processing happens locally in your browser</span>
+                <!-- Main Stats -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-6">Statistics</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1" id="words-count">0</div>
+                            <div class="text-xs text-gray-400 uppercase">Words</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1" id="chars-count">0</div>
+                            <div class="text-xs text-gray-400 uppercase">Chars</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                            <div class="text-3xl font-bold text-white mb-1" id="sentences-count">0</div>
+                            <div class="text-xs text-gray-400 uppercase">Sentences</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-white/5 border border-white/5 text-center">
+                            <div class="text-3xl font-bold text-primary mb-1" id="reading-time">0m</div>
+                            <div class="text-xs text-gray-400 uppercase">Read Time</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-white/10 space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Paragraphs</span>
+                            <span class="text-white font-mono" id="paragraphs-count">0</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-400">Chars (no spaces)</span>
+                            <span class="text-white font-mono" id="chars-no-space-count">0</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="text-sm text-slate-500 dark:text-slate-400">
-                    © 2023 AlphaPrime Tools. Free online text analysis tool.
-                </p>
-                <div class="flex gap-6 mt-2">
-                         </div>
+
+                <!-- NEW: Keyword Density -->
+                <div class="glass-panel p-6 rounded-2xl">
+                    <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Top Keywords</h3>
+                    <div id="keyword-list" class="space-y-2">
+                        <!-- Populated by JS -->
+                        <div class="text-sm text-gray-500 italic text-center py-4">Start typing to see keywords</div>
+                    </div>
+                </div>
+
             </div>
-        </footer>
-    </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-panel border-t border-white/5 mt-auto relative z-10 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-gray-500 text-sm">
+                © 2024 AlphaPrime Tools. All processing happens locally in your browser.
+            </p>
+        </div>
+    </footer>
 
     <!-- JavaScript -->
     <script src="word-counter.js" defer></script>
 </body>
+
 </html>
