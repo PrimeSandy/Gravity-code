@@ -54,6 +54,9 @@ body {
     opacity: 0.4;
     border-radius: 50%;
     animation: drift 20s infinite alternate;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .blob-1 {

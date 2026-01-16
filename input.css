@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles if needed, though most are in tailwind.config.js or style.css */
+@layer base {
+    body {
+        @apply bg-slate-900 text-slate-50;
+    }
+}

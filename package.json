@@ -1,0 +1,30 @@
+{
+  "name": "multi-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PrimeSandy/Gravity-code.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PrimeSandy/Gravity-code/issues"
+  },
+  "homepage": "https://github.com/PrimeSandy/Gravity-code#readme",
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6"
+  }
+}
